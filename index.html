@@ -1,9 +1,219 @@
-<html>
- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divyaansh | Architect of Connection</title>
+    <style>
+        /* CSS Reset & Variables */
+        :root {
+            --bg-color: #0a0a0a;
+            --text-primary: #e0e0e0;
+            --text-secondary: #888888;
+            --accent-color: #5e81ac; /* A subtle, cosmic blue */
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'Courier New', Courier, monospace;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: var(--font-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        /* Layout & Spacing */
+        .container {
+            max-width: 800px;
+            width: 90%;
+            padding: 100px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 80px;
+        }
+
+        section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 3rem;
+            font-weight: 300;
+            margin: 0;
+            letter-spacing: -1px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+            margin: 0 0 10px 0;
+            border-bottom: 1px solid #222;
+            padding-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #fff;
+        }
+
+        /* Specific Elements */
+        .hero {
+            text-align: left;
+            margin-bottom: 40px;
+        }
+
+        .hero p {
+            max-width: 600px;
+            margin-top: 20px;
+            color: var(--text-primary);
+        }
+
+        .timeline-item {
+            border-left: 2px solid #333;
+            padding-left: 20px;
+            margin-left: 10px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 6px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--bg-color);
+            border: 2px solid var(--accent-color);
+        }
+
+        .timeline-date {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .timeline-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin: 5px 0;
+        }
+
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .principle {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer {
+            margin-top: 100px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Simple fade-in animation */
+        .fade-in {
+            animation: fadeIn 1.5s ease-in forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+    <!-- Optional: Google Fonts for Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
 <body>
-  <h1>Divyaansh Anuj</h1>
-  <p>Welcome to my website!!!</p>
-  <img src="https://content.codecademy.com/articles/github-pages-via-web-app/happy-ice-cream.gif" />
+
+    <div class="container fade-in">
+        
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <h1>Divyaansh Anuj</h1>
+            <p>I build systems that increase the density, efficiency, and depth of human connection. Currently orchestrating the <strong>MindUniverse</strong>.</p>
+        </section>
+
+        <!-- THE ERAS (TIMELINE) -->
+        <section>
+            <h2>The Eras</h2>
+            
+            <div class="timeline-item">
+                <div class="timeline-date">Phase III: The Present</div>
+                <div class="timeline-title"><a href="https://verseisbetter.com" target="_blank">VERSE</a></div>
+                <p>An AI-assisted social protocol designed for founders. We simulate the initial, repetitive layers of networking, allowing extraordinary minds to bypass small talk and connect asynchronously at scale.</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">Phase II: The Pivot</div>
+                <div class="timeline-title">Introbot</div>
+                <p>An AI community manager that evolved into a professional networking assistant. During the COVID-19 crisis, it served as a critical lifeline, addressing over 750,000 SOS queries in 30 days.</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">Phase I: The Foundation</div>
+                <div class="timeline-title">Dextra</div>
+                <p>A collaborative platform for creative professionals. Scaled to 50,000 creators, establishing the foundational thesis that human potential is maximized through structured collaboration.</p>
+            </div>
+        </section>
+
+        <!-- THE PHILOSOPHY -->
+        <section>
+            <h2>Prime Paradigms</h2>
+            <div class="philosophy-grid">
+                <div class="principle">
+                    <div class="timeline-title">Information is Everything</div>
+                    <p>Private information is our personal individuality. Public information is our collective knowledge. Most systemic problems arise from information asymmetry.</p>
+                </div>
+                <div class="principle">
+                    <div class="timeline-title">The Abundance Engine</div>
+                    <p>True scale is achieved not by monetizing human time, but by creating networks where the value of connection compounds infinitely, reducing the friction of finding signal in the noise.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER / CONTACT -->
+        <div class="footer">
+            <p>Keep calm & do kaam.</p>
+            <p style="margin-top: 10px;">
+                <a href="mailto:divyaansh@verseisbetter.com">Email</a> • 
+                <a href="https://linkedin.com/in/divyaanshanuj" target="_blank">LinkedIn</a>
+            </p>
+        </div>
+
+    </div>
+
 </body>
- 
 </html>
