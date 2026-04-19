@@ -3,217 +3,648 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Divyaansh | Architect of Connection</title>
+    <title>Divyaansh Anuj</title>
+    <meta name="description" content="Founder & architect building systems for exponential human connection. Founder of VERSE.">
+    <meta name="theme-color" content="#0f0e0c">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&display=swap" rel="stylesheet">
     <style>
-        /* CSS Reset & Variables */
         :root {
-            --bg-color: #0a0a0a;
-            --text-primary: #e0e0e0;
-            --text-secondary: #888888;
-            --accent-color: #5e81ac; /* A subtle, cosmic blue */
-            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            --font-mono: 'Courier New', Courier, monospace;
+            --bg: #0f0e0c;
+            --bg-elevated: #161411;
+            --ink: #f4f0e8;
+            --ink-muted: #a39e93;
+            --ink-faint: #6b665c;
+            --line: rgba(244, 240, 232, 0.12);
+            --line-strong: rgba(244, 240, 232, 0.22);
+            --accent: #d4a574;
+            --accent-soft: rgba(212, 165, 116, 0.18);
+            --glow: rgba(212, 165, 116, 0.35);
+            --radius-lg: 20px;
+            --radius-md: 12px;
+            --radius-sm: 8px;
+            --space-xs: 0.5rem;
+            --space-sm: 0.75rem;
+            --space-md: 1.25rem;
+            --space-lg: 2rem;
+            --space-xl: 3.5rem;
+            --space-2xl: 5rem;
+            --font-sans: "DM Sans", system-ui, sans-serif;
+            --font-display: "Fraunces", Georgia, serif;
+            --max: 68rem;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-primary);
-            font-family: var(--font-main);
-            line-height: 1.6;
             margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            overflow-x: hidden;
-        }
-
-        /* Layout & Spacing */
-        .container {
-            max-width: 800px;
-            width: 90%;
-            padding: 100px 0;
-            display: flex;
-            flex-direction: column;
-            gap: 80px;
-        }
-
-        section {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        /* Typography */
-        h1 {
-            font-size: 3rem;
-            font-weight: 300;
-            margin: 0;
-            letter-spacing: -1px;
-        }
-
-        h2 {
-            font-size: 1.5rem;
-            font-weight: 400;
-            color: var(--text-secondary);
-            margin: 0 0 10px 0;
-            border-bottom: 1px solid #222;
-            padding-bottom: 10px;
-        }
-
-        p {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin: 0;
+            min-height: 100vh;
+            font-family: var(--font-sans);
+            font-size: clamp(1rem, 0.95rem + 0.2vw, 1.0625rem);
+            line-height: 1.65;
+            color: var(--ink-muted);
+            background-color: var(--bg);
+            background-image:
+                radial-gradient(1200px 800px at 12% -10%, rgba(212, 165, 116, 0.12), transparent 55%),
+                radial-gradient(900px 600px at 88% 0%, rgba(120, 160, 200, 0.08), transparent 50%),
+                radial-gradient(800px 500px at 50% 100%, rgba(212, 165, 116, 0.06), transparent 45%);
+            -webkit-font-smoothing: antialiased;
         }
 
         a {
-            color: var(--accent-color);
-            text-decoration: none;
-            transition: color 0.3s ease;
+            color: var(--accent);
+            text-decoration-thickness: 1px;
+            text-underline-offset: 0.2em;
+            transition: color 0.2s ease, text-decoration-color 0.2s ease;
         }
 
         a:hover {
-            color: #fff;
+            color: var(--ink);
         }
 
-        /* Specific Elements */
-        .hero {
-            text-align: left;
-            margin-bottom: 40px;
+        a:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+            border-radius: 2px;
         }
 
-        .hero p {
-            max-width: 600px;
-            margin-top: 20px;
-            color: var(--text-primary);
-        }
-
-        .timeline-item {
-            border-left: 2px solid #333;
-            padding-left: 20px;
-            margin-left: 10px;
-            position: relative;
-        }
-
-        .timeline-item::before {
-            content: '';
+        .skip {
             position: absolute;
-            left: -6px;
-            top: 6px;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background-color: var(--bg-color);
-            border: 2px solid var(--accent-color);
+            left: -9999px;
+            top: auto;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
         }
 
-        .timeline-date {
-            font-family: var(--font-mono);
-            font-size: 0.9rem;
-            color: var(--text-secondary);
+        .skip:focus {
+            position: fixed;
+            left: 1rem;
+            top: 1rem;
+            width: auto;
+            height: auto;
+            padding: 0.5rem 1rem;
+            background: var(--bg-elevated);
+            color: var(--ink);
+            z-index: 100;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--line);
         }
 
-        .timeline-title {
-            font-size: 1.2rem;
+        .wrap {
+            width: min(100% - 2.5rem, var(--max));
+            margin-inline: auto;
+        }
+
+        /* Site header */
+        .site-header {
+            padding-block: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .brand {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: var(--space-md);
+        }
+
+        .site-title {
+            margin: 0;
+            font-family: var(--font-display);
             font-weight: 500;
-            color: var(--text-primary);
-            margin: 5px 0;
+            font-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
+            letter-spacing: -0.02em;
+            color: var(--ink);
         }
 
-        .philosophy-grid {
+        .tagline {
+            margin: 0;
+            max-width: 28rem;
+            font-size: 0.95rem;
+            color: var(--ink-faint);
+            line-height: 1.5;
+        }
+
+        /* Hero */
+        .hero {
+            padding-block: var(--space-2xl) var(--space-xl);
+        }
+
+        .hero-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
+            gap: var(--space-xl);
+        }
+
+        @media (min-width: 900px) {
+            .hero-grid {
+                grid-template-columns: 1.15fr 0.85fr;
+                align-items: start;
+            }
+        }
+
+        .hero-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--ink-faint);
+            margin-bottom: var(--space-sm);
+        }
+
+        .hero-kicker::before {
+            content: "";
+            width: 2rem;
+            height: 1px;
+            background: linear-gradient(90deg, var(--accent), transparent);
+        }
+
+        .hero h1 {
+            margin: 0 0 var(--space-xs);
+            font-family: var(--font-display);
+            font-weight: 500;
+            font-size: clamp(2.5rem, 1.8rem + 2.8vw, 4rem);
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            color: var(--ink);
+        }
+
+        .hero-sub {
+            margin: 0 0 var(--space-lg);
+            font-family: var(--font-display);
+            font-style: italic;
+            font-weight: 400;
+            font-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
+            color: var(--accent);
+        }
+
+        .hero-body {
+            margin: 0;
+            max-width: 38rem;
+            font-size: 1.0625rem;
+            color: var(--ink-muted);
+        }
+
+        .hero-body strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .status {
+            margin: 0;
+            padding: var(--space-md);
+            border-radius: var(--radius-lg);
+            background: linear-gradient(145deg, rgba(22, 20, 17, 0.95), rgba(22, 20, 17, 0.75));
+            border: 1px solid var(--line);
+            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.35), 0 24px 48px rgba(0, 0, 0, 0.35);
+        }
+
+        .status-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--ink-faint);
+            margin-bottom: var(--space-sm);
+        }
+
+        .pulse {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 0 0 var(--glow);
+            animation: pulse 2.4s ease-out infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 var(--glow); }
+            70% { box-shadow: 0 0 0 10px transparent; }
+            100% { box-shadow: 0 0 0 0 transparent; }
+        }
+
+        .status p {
+            margin: 0;
+            color: var(--ink-muted);
+            font-size: 0.98rem;
+        }
+
+        /* Section chrome */
+        main > section {
+            padding-block: var(--space-xl);
+            border-top: 1px solid var(--line);
+        }
+
+        .section-head {
+            margin-bottom: var(--space-lg);
+        }
+
+        .section-eyebrow {
+            margin: 0 0 var(--space-xs);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+
+        .section-title {
+            margin: 0;
+            font-family: var(--font-display);
+            font-weight: 500;
+            font-size: clamp(1.75rem, 1.4rem + 1.2vw, 2.35rem);
+            letter-spacing: -0.02em;
+            color: var(--ink);
+        }
+
+        .section-lede {
+            margin: var(--space-sm) 0 0;
+            max-width: 36rem;
+            color: var(--ink-faint);
+            font-size: 0.98rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 0.55rem;
+            top: 0.35rem;
+            bottom: 0.35rem;
+            width: 1px;
+            background: linear-gradient(var(--line-strong), var(--line));
+        }
+
+        .era {
+            position: relative;
+            padding-left: 2.25rem;
+            padding-bottom: var(--space-xl);
+        }
+
+        .era:last-child {
+            padding-bottom: 0;
+        }
+
+        .era::before {
+            content: "";
+            position: absolute;
+            left: 0.2rem;
+            top: 0.35rem;
+            width: 0.75rem;
+            height: 0.75rem;
+            border-radius: 50%;
+            background: var(--bg);
+            border: 2px solid var(--accent);
+            box-shadow: 0 0 0 4px rgba(212, 165, 116, 0.12);
+        }
+
+        .era-card {
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            background: rgba(22, 20, 17, 0.55);
+            border: 1px solid var(--line);
+            backdrop-filter: blur(8px);
+        }
+
+        .era-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-sm) var(--space-md);
+            align-items: baseline;
+            margin-bottom: var(--space-sm);
+        }
+
+        .phase {
+            margin: 0;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--ink-faint);
+        }
+
+        .timeline-range {
+            margin: 0;
+            font-variant-numeric: tabular-nums;
+            font-size: 0.875rem;
+            color: var(--accent);
+        }
+
+        .era-title {
+            margin: 0 0 var(--space-xs);
+            font-family: var(--font-display);
+            font-size: clamp(1.35rem, 1.15rem + 0.6vw, 1.65rem);
+            font-weight: 500;
+            color: var(--ink);
+        }
+
+        .era-role {
+            margin: 0 0 var(--space-md);
+            font-size: 0.95rem;
+            color: var(--ink-muted);
+        }
+
+        .era-role span {
+            color: var(--ink-faint);
+        }
+
+        .era-desc {
+            margin: 0 0 var(--space-md);
+            color: var(--ink-muted);
+        }
+
+        .era-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+            align-items: center;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.55rem 1rem;
+            font-family: var(--font-sans);
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--bg);
+            background: var(--accent);
+            border-radius: 999px;
+            border: none;
+            text-decoration: none;
+            transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+        }
+
+        .btn:hover {
+            color: var(--bg);
+            background: #e0b588;
+            box-shadow: 0 8px 24px rgba(212, 165, 116, 0.25);
+            transform: translateY(-1px);
+        }
+
+        .btn:focus-visible {
+            outline: 2px solid var(--ink);
+            outline-offset: 2px;
+        }
+
+        .outcome {
+            margin: 0;
+            padding: var(--space-sm) var(--space-md);
+            font-size: 0.9rem;
+            color: var(--ink-muted);
+            border-left: 3px solid var(--accent-soft);
+            background: rgba(212, 165, 116, 0.06);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        }
+
+        .outcome strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        /* Principles */
+        .principles {
+            display: grid;
+            gap: var(--space-md);
+        }
+
+        @media (min-width: 720px) {
+            .principles {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         .principle {
-            background: rgba(255, 255, 255, 0.02);
-            padding: 20px;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            background: rgba(22, 20, 17, 0.4);
+            border: 1px solid var(--line);
+            transition: border-color 0.2s ease, transform 0.2s ease;
         }
 
-        .footer {
-            margin-top: 100px;
-            text-align: center;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
+        .principle:hover {
+            border-color: var(--line-strong);
+            transform: translateY(-2px);
         }
 
-        /* Simple fade-in animation */
-        .fade-in {
-            animation: fadeIn 1.5s ease-in forwards;
+        .principle h3 {
+            margin: 0 0 var(--space-sm);
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--ink);
+            letter-spacing: -0.01em;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .principle p {
+            margin: 0;
+            font-size: 0.98rem;
+        }
+
+        /* Footer */
+        .site-footer {
+            margin-top: var(--space-xl);
+            padding-block: var(--space-xl) var(--space-2xl);
+            border-top: 1px solid var(--line);
+        }
+
+        .footer-inner {
+            display: grid;
+            gap: var(--space-lg);
+        }
+
+        @media (min-width: 720px) {
+            .footer-inner {
+                grid-template-columns: 1fr auto;
+                align-items: end;
+            }
+        }
+
+        .footer-cta {
+            margin: 0;
+            font-family: var(--font-display);
+            font-size: clamp(1.35rem, 1.2rem + 0.5vw, 1.75rem);
+            color: var(--ink);
+            letter-spacing: -0.02em;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+        }
+
+        .footer-links a {
+            font-weight: 500;
+        }
+
+        .copyright {
+            margin: var(--space-lg) 0 0;
+            font-size: 0.8125rem;
+            color: var(--ink-faint);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+            .pulse {
+                animation: none;
+            }
+            .btn:hover,
+            .principle:hover {
+                transform: none;
+            }
         }
     </style>
-    <!-- Optional: Google Fonts for Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
+    <a class="skip" href="#main">Skip to content</a>
 
-    <div class="container fade-in">
-        
-        <!-- HERO SECTION -->
-        <section class="hero">
-            <h1>Divyaansh Anuj</h1>
-            <p>I build systems that increase the density, efficiency, and depth of human connection. Currently orchestrating the <strong>MindUniverse</strong>.</p>
-        </section>
-
-        <!-- THE ERAS (TIMELINE) -->
-        <section>
-            <h2>The Eras</h2>
-            
-            <div class="timeline-item">
-                <div class="timeline-date">Phase III: The Present</div>
-                <div class="timeline-title"><a href="https://verseisbetter.com" target="_blank">VERSE</a></div>
-                <p>An AI-assisted social protocol designed for founders. We simulate the initial, repetitive layers of networking, allowing extraordinary minds to bypass small talk and connect asynchronously at scale.</p>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-date">Phase II: The Pivot</div>
-                <div class="timeline-title">Introbot</div>
-                <p>An AI community manager that evolved into a professional networking assistant. During the COVID-19 crisis, it served as a critical lifeline, addressing over 750,000 SOS queries in 30 days.</p>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-date">Phase I: The Foundation</div>
-                <div class="timeline-title">Dextra</div>
-                <p>A collaborative platform for creative professionals. Scaled to 50,000 creators, establishing the foundational thesis that human potential is maximized through structured collaboration.</p>
-            </div>
-        </section>
-
-        <!-- THE PHILOSOPHY -->
-        <section>
-            <h2>Prime Paradigms</h2>
-            <div class="philosophy-grid">
-                <div class="principle">
-                    <div class="timeline-title">Information is Everything</div>
-                    <p>Private information is our personal individuality. Public information is our collective knowledge. Most systemic problems arise from information asymmetry.</p>
-                </div>
-                <div class="principle">
-                    <div class="timeline-title">The Abundance Engine</div>
-                    <p>True scale is achieved not by monetizing human time, but by creating networks where the value of connection compounds infinitely, reducing the friction of finding signal in the noise.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- FOOTER / CONTACT -->
-        <div class="footer">
-            <p>Keep calm & do kaam.</p>
-            <p style="margin-top: 10px;">
-                <a href="mailto:divyaansh@verseisbetter.com">Email</a> • 
-                <a href="https://linkedin.com/in/divyaanshanuj" target="_blank">LinkedIn</a>
-            </p>
+    <header class="site-header wrap">
+        <div class="brand">
+            <h1 class="site-title">Divyaansh Anuj</h1>
+            <p class="tagline">Building systems for exponential human connection.</p>
         </div>
+    </header>
 
-    </div>
+    <main id="main">
+        <section class="hero wrap" aria-labelledby="hero-heading">
+            <div class="hero-grid">
+                <div>
+                    <p class="hero-kicker">Who &amp; what</p>
+                    <h1 id="hero-heading">Divyaansh Anuj</h1>
+                    <p class="hero-sub">Founder &amp; Architect</p>
+                    <p class="hero-body">
+                        I build software that changes how people coordinate, communicate, and create value. Currently, I am the founder and sole developer of <strong>VERSE</strong>, an AI-assisted social protocol designed to eliminate the friction of professional networking. My work is driven by a single thesis: that the most valuable resource in the world is deep, authentic human connection, and that technology should be used to scale it, not replace it.
+                    </p>
+                </div>
+                <aside class="status" aria-label="Current status">
+                    <div class="status-label">
+                        <span class="pulse" aria-hidden="true"></span>
+                        Now
+                    </div>
+                    <p>Currently building while traveling around SE Asia.</p>
+                </aside>
+            </div>
+        </section>
 
+        <section class="wrap" aria-labelledby="work-heading">
+            <div class="section-head">
+                <p class="section-eyebrow">What I have done</p>
+                <h2 class="section-title" id="work-heading">The Eras of Execution</h2>
+                <p class="section-lede">Three chapters of building at the intersection of community, intelligence, and coordination—newest first.</p>
+            </div>
+            <ol class="timeline">
+                <li class="era">
+                    <article class="era-card" aria-labelledby="era-verse-title">
+                        <div class="era-meta">
+                            <p class="phase">Phase III · Present</p>
+                            <p class="timeline-range">2023 – Present</p>
+                        </div>
+                        <h3 class="era-title" id="era-verse-title">VERSE</h3>
+                        <p class="era-role"><span>Role:</span> Founder</p>
+                        <p class="era-desc">
+                            A private, async network for founders and leaders. VERSE uses LLMs to simulate the initial, repetitive stages of a conversation, allowing users to bypass small talk and engage only on the deepest, most meaningful questions. It is a system designed to scale a user's presence without scaling their calendar overhead.
+                        </p>
+                        <div class="era-actions">
+                            <a class="btn" href="https://verseisbetter.com" target="_blank" rel="noopener noreferrer">Visit verseisbetter.com</a>
+                        </div>
+                    </article>
+                </li>
+                <li class="era">
+                    <article class="era-card" aria-labelledby="era-introbot-title">
+                        <div class="era-meta">
+                            <p class="phase">Phase II</p>
+                            <p class="timeline-range">2019 – 2022</p>
+                        </div>
+                        <h3 class="era-title" id="era-introbot-title">Introbot</h3>
+                        <p class="era-role"><span>Role:</span> Founder</p>
+                        <p class="era-desc">
+                            An AI-powered community manager and professional networking assistant. During the second wave of the COVID-19 pandemic in India, Introbot was pivoted to serve as a critical resource-matching tool. It processed over 750,000 SOS queries in 30 days, connecting patients with verified medical supplies and hospital beds, ultimately impacting over 25,000 lives.
+                        </p>
+                        <p class="outcome"><strong>Outcome:</strong> Transitioned out; company remains operational.</p>
+                    </article>
+                </li>
+                <li class="era">
+                    <article class="era-card" aria-labelledby="era-dextra-title">
+                        <div class="era-meta">
+                            <p class="phase">Phase I</p>
+                            <p class="timeline-range">2016 – 2019</p>
+                        </div>
+                        <h3 class="era-title" id="era-dextra-title">Dextra</h3>
+                        <p class="era-role"><span>Role:</span> Founder</p>
+                        <p class="era-desc">
+                            A collaborative platform designed specifically for creative professionals. Dextra functioned as a &ldquo;LinkedIn for creators,&rdquo; scaling to a community of 50,000 active users and successfully raising venture capital.
+                        </p>
+                        <p class="outcome"><strong>Outcome:</strong> Acquired.</p>
+                    </article>
+                </li>
+            </ol>
+        </section>
+
+        <section class="wrap" aria-labelledby="principles-heading">
+            <div class="section-head">
+                <p class="section-eyebrow">Why</p>
+                <h2 class="section-title" id="principles-heading">Mental Models &amp; Frameworks</h2>
+                <p class="section-lede">Operating principles that shape how I design products, teams, and networks.</p>
+            </div>
+            <div class="principles">
+                <article class="principle">
+                    <h3>Information is Fundamental</h3>
+                    <p>Private information forms our individuality; public information forms our collective knowledge. I believe most systemic problems—and their solutions—are rooted in resolving information asymmetry.</p>
+                </article>
+                <article class="principle">
+                    <h3>The Abundance Engine</h3>
+                    <p>I design systems based on positive-sum economics. True scale is not achieved by monetizing a user's finite time, but by creating a network where the value of a connection compounds infinitely for all participants.</p>
+                </article>
+                <article class="principle">
+                    <h3>Asynchronous Depth</h3>
+                    <p>Synchronous communication (meetings, calls) is a bottleneck to scale. I build tools that facilitate deep, meaningful exchanges of thought asynchronously, reserving real-time interaction only for established, high-value relationships.</p>
+                </article>
+                <article class="principle">
+                    <h3>&ldquo;Keep Calm &amp; Do Kaam&rdquo;</h3>
+                    <p>My core operational philosophy. Progress requires sustained, disciplined execution (kaam) anchored by emotional and strategic stability (calm).</p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer wrap">
+        <div class="footer-inner">
+            <p class="footer-cta">Let&rsquo;s connect on the things that matter.</p>
+            <div class="footer-links">
+                <a href="mailto:divyaansh@verseisbetter.com">divyaansh@verseisbetter.com</a>
+                <a href="https://linkedin.com/in/divyaansh" target="_blank" rel="noopener noreferrer">linkedin.com/in/divyaansh</a>
+            </div>
+        </div>
+        <p class="copyright">&copy; <span id="year"></span> Divyaansh Anuj</p>
+    </footer>
+
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
