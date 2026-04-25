@@ -1,650 +1,609 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Divyaansh Anuj</title>
-    <meta name="description" content="Founder & architect building systems for exponential human connection. Founder of VERSE.">
-    <meta name="theme-color" content="#0f0e0c">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg: #0f0e0c;
-            --bg-elevated: #161411;
-            --ink: #f4f0e8;
-            --ink-muted: #a39e93;
-            --ink-faint: #6b665c;
-            --line: rgba(244, 240, 232, 0.12);
-            --line-strong: rgba(244, 240, 232, 0.22);
-            --accent: #d4a574;
-            --accent-soft: rgba(212, 165, 116, 0.18);
-            --glow: rgba(212, 165, 116, 0.35);
-            --radius-lg: 20px;
-            --radius-md: 12px;
-            --radius-sm: 8px;
-            --space-xs: 0.5rem;
-            --space-sm: 0.75rem;
-            --space-md: 1.25rem;
-            --space-lg: 2rem;
-            --space-xl: 3.5rem;
-            --space-2xl: 5rem;
-            --font-sans: "DM Sans", system-ui, sans-serif;
-            --font-display: "Fraunces", Georgia, serif;
-            --max: 68rem;
-        }
-
-        *, *::before, *::after {
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            margin: 0;
-            min-height: 100vh;
-            font-family: var(--font-sans);
-            font-size: clamp(1rem, 0.95rem + 0.2vw, 1.0625rem);
-            line-height: 1.65;
-            color: var(--ink-muted);
-            background-color: var(--bg);
-            background-image:
-                radial-gradient(1200px 800px at 12% -10%, rgba(212, 165, 116, 0.12), transparent 55%),
-                radial-gradient(900px 600px at 88% 0%, rgba(120, 160, 200, 0.08), transparent 50%),
-                radial-gradient(800px 500px at 50% 100%, rgba(212, 165, 116, 0.06), transparent 45%);
-            -webkit-font-smoothing: antialiased;
-        }
-
-        a {
-            color: var(--accent);
-            text-decoration-thickness: 1px;
-            text-underline-offset: 0.2em;
-            transition: color 0.2s ease, text-decoration-color 0.2s ease;
-        }
-
-        a:hover {
-            color: var(--ink);
-        }
-
-        a:focus-visible {
-            outline: 2px solid var(--accent);
-            outline-offset: 3px;
-            border-radius: 2px;
-        }
-
-        .skip {
-            position: absolute;
-            left: -9999px;
-            top: auto;
-            width: 1px;
-            height: 1px;
-            overflow: hidden;
-        }
-
-        .skip:focus {
-            position: fixed;
-            left: 1rem;
-            top: 1rem;
-            width: auto;
-            height: auto;
-            padding: 0.5rem 1rem;
-            background: var(--bg-elevated);
-            color: var(--ink);
-            z-index: 100;
-            border-radius: var(--radius-sm);
-            border: 1px solid var(--line);
-        }
-
-        .wrap {
-            width: min(100% - 2.5rem, var(--max));
-            margin-inline: auto;
-        }
-
-        /* Site header */
-        .site-header {
-            padding-block: var(--space-lg) var(--space-md);
-            border-bottom: 1px solid var(--line);
-        }
-
-        .brand {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: baseline;
-            justify-content: space-between;
-            gap: var(--space-md);
-        }
-
-        .site-title {
-            margin: 0;
-            font-family: var(--font-display);
-            font-weight: 500;
-            font-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
-            letter-spacing: -0.02em;
-            color: var(--ink);
-        }
-
-        .tagline {
-            margin: 0;
-            max-width: 28rem;
-            font-size: 0.95rem;
-            color: var(--ink-faint);
-            line-height: 1.5;
-        }
-
-        /* Hero */
-        .hero {
-            padding-block: var(--space-2xl) var(--space-xl);
-        }
-
-        .hero-grid {
-            display: grid;
-            gap: var(--space-xl);
-        }
-
-        @media (min-width: 900px) {
-            .hero-grid {
-                grid-template-columns: 1.15fr 0.85fr;
-                align-items: start;
-            }
-        }
-
-        .hero-kicker {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.8125rem;
-            font-weight: 600;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--ink-faint);
-            margin-bottom: var(--space-sm);
-        }
-
-        .hero-kicker::before {
-            content: "";
-            width: 2rem;
-            height: 1px;
-            background: linear-gradient(90deg, var(--accent), transparent);
-        }
-
-        .hero h1 {
-            margin: 0 0 var(--space-xs);
-            font-family: var(--font-display);
-            font-weight: 500;
-            font-size: clamp(2.5rem, 1.8rem + 2.8vw, 4rem);
-            line-height: 1.05;
-            letter-spacing: -0.03em;
-            color: var(--ink);
-        }
-
-        .hero-sub {
-            margin: 0 0 var(--space-lg);
-            font-family: var(--font-display);
-            font-style: italic;
-            font-weight: 400;
-            font-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
-            color: var(--accent);
-        }
-
-        .hero-body {
-            margin: 0;
-            max-width: 38rem;
-            font-size: 1.0625rem;
-            color: var(--ink-muted);
-        }
-
-        .hero-body strong {
-            color: var(--ink);
-            font-weight: 600;
-        }
-
-        .status {
-            margin: 0;
-            padding: var(--space-md);
-            border-radius: var(--radius-lg);
-            background: linear-gradient(145deg, rgba(22, 20, 17, 0.95), rgba(22, 20, 17, 0.75));
-            border: 1px solid var(--line);
-            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.35), 0 24px 48px rgba(0, 0, 0, 0.35);
-        }
-
-        .status-label {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--ink-faint);
-            margin-bottom: var(--space-sm);
-        }
-
-        .pulse {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--accent);
-            box-shadow: 0 0 0 0 var(--glow);
-            animation: pulse 2.4s ease-out infinite;
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 var(--glow); }
-            70% { box-shadow: 0 0 0 10px transparent; }
-            100% { box-shadow: 0 0 0 0 transparent; }
-        }
-
-        .status p {
-            margin: 0;
-            color: var(--ink-muted);
-            font-size: 0.98rem;
-        }
-
-        /* Section chrome */
-        main > section {
-            padding-block: var(--space-xl);
-            border-top: 1px solid var(--line);
-        }
-
-        .section-head {
-            margin-bottom: var(--space-lg);
-        }
-
-        .section-eyebrow {
-            margin: 0 0 var(--space-xs);
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: var(--accent);
-        }
-
-        .section-title {
-            margin: 0;
-            font-family: var(--font-display);
-            font-weight: 500;
-            font-size: clamp(1.75rem, 1.4rem + 1.2vw, 2.35rem);
-            letter-spacing: -0.02em;
-            color: var(--ink);
-        }
-
-        .section-lede {
-            margin: var(--space-sm) 0 0;
-            max-width: 36rem;
-            color: var(--ink-faint);
-            font-size: 0.98rem;
-        }
-
-        /* Timeline */
-        .timeline {
-            position: relative;
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
-
-        .timeline::before {
-            content: "";
-            position: absolute;
-            left: 0.55rem;
-            top: 0.35rem;
-            bottom: 0.35rem;
-            width: 1px;
-            background: linear-gradient(var(--line-strong), var(--line));
-        }
-
-        .era {
-            position: relative;
-            padding-left: 2.25rem;
-            padding-bottom: var(--space-xl);
-        }
-
-        .era:last-child {
-            padding-bottom: 0;
-        }
-
-        .era::before {
-            content: "";
-            position: absolute;
-            left: 0.2rem;
-            top: 0.35rem;
-            width: 0.75rem;
-            height: 0.75rem;
-            border-radius: 50%;
-            background: var(--bg);
-            border: 2px solid var(--accent);
-            box-shadow: 0 0 0 4px rgba(212, 165, 116, 0.12);
-        }
-
-        .era-card {
-            padding: var(--space-lg);
-            border-radius: var(--radius-lg);
-            background: rgba(22, 20, 17, 0.55);
-            border: 1px solid var(--line);
-            backdrop-filter: blur(8px);
-        }
-
-        .era-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--space-sm) var(--space-md);
-            align-items: baseline;
-            margin-bottom: var(--space-sm);
-        }
-
-        .phase {
-            margin: 0;
-            font-size: 0.8125rem;
-            font-weight: 600;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            color: var(--ink-faint);
-        }
-
-        .timeline-range {
-            margin: 0;
-            font-variant-numeric: tabular-nums;
-            font-size: 0.875rem;
-            color: var(--accent);
-        }
-
-        .era-title {
-            margin: 0 0 var(--space-xs);
-            font-family: var(--font-display);
-            font-size: clamp(1.35rem, 1.15rem + 0.6vw, 1.65rem);
-            font-weight: 500;
-            color: var(--ink);
-        }
-
-        .era-role {
-            margin: 0 0 var(--space-md);
-            font-size: 0.95rem;
-            color: var(--ink-muted);
-        }
-
-        .era-role span {
-            color: var(--ink-faint);
-        }
-
-        .era-desc {
-            margin: 0 0 var(--space-md);
-            color: var(--ink-muted);
-        }
-
-        .era-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--space-sm);
-            align-items: center;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            padding: 0.55rem 1rem;
-            font-family: var(--font-sans);
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: var(--bg);
-            background: var(--accent);
-            border-radius: 999px;
-            border: none;
-            text-decoration: none;
-            transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
-        }
-
-        .btn:hover {
-            color: var(--bg);
-            background: #e0b588;
-            box-shadow: 0 8px 24px rgba(212, 165, 116, 0.25);
-            transform: translateY(-1px);
-        }
-
-        .btn:focus-visible {
-            outline: 2px solid var(--ink);
-            outline-offset: 2px;
-        }
-
-        .outcome {
-            margin: 0;
-            padding: var(--space-sm) var(--space-md);
-            font-size: 0.9rem;
-            color: var(--ink-muted);
-            border-left: 3px solid var(--accent-soft);
-            background: rgba(212, 165, 116, 0.06);
-            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-        }
-
-        .outcome strong {
-            color: var(--ink);
-            font-weight: 600;
-        }
-
-        /* Principles */
-        .principles {
-            display: grid;
-            gap: var(--space-md);
-        }
-
-        @media (min-width: 720px) {
-            .principles {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        .principle {
-            padding: var(--space-lg);
-            border-radius: var(--radius-lg);
-            background: rgba(22, 20, 17, 0.4);
-            border: 1px solid var(--line);
-            transition: border-color 0.2s ease, transform 0.2s ease;
-        }
-
-        .principle:hover {
-            border-color: var(--line-strong);
-            transform: translateY(-2px);
-        }
-
-        .principle h3 {
-            margin: 0 0 var(--space-sm);
-            font-family: var(--font-display);
-            font-size: 1.2rem;
-            font-weight: 500;
-            color: var(--ink);
-            letter-spacing: -0.01em;
-        }
-
-        .principle p {
-            margin: 0;
-            font-size: 0.98rem;
-        }
-
-        /* Footer */
-        .site-footer {
-            margin-top: var(--space-xl);
-            padding-block: var(--space-xl) var(--space-2xl);
-            border-top: 1px solid var(--line);
-        }
-
-        .footer-inner {
-            display: grid;
-            gap: var(--space-lg);
-        }
-
-        @media (min-width: 720px) {
-            .footer-inner {
-                grid-template-columns: 1fr auto;
-                align-items: end;
-            }
-        }
-
-        .footer-cta {
-            margin: 0;
-            font-family: var(--font-display);
-            font-size: clamp(1.35rem, 1.2rem + 0.5vw, 1.75rem);
-            color: var(--ink);
-            letter-spacing: -0.02em;
-        }
-
-        .footer-links {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-sm);
-        }
-
-        .footer-links a {
-            font-weight: 500;
-        }
-
-        .copyright {
-            margin: var(--space-lg) 0 0;
-            font-size: 0.8125rem;
-            color: var(--ink-faint);
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            html {
-                scroll-behavior: auto;
-            }
-            .pulse {
-                animation: none;
-            }
-            .btn:hover,
-            .principle:hover {
-                transform: none;
-            }
-        }
-    </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="color-scheme" content="dark" />
+<title>Divyaansh Anuj</title>
+<meta name="description" content="Founder. Builder of tools for minds — to think, connect, and compound across time." />
+<meta property="og:title" content="Divyaansh Anuj" />
+<meta property="og:description" content="Founder. Building tools for minds — to think, connect, and compound across time." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://divyaansh.com" />
+<meta name="twitter:card" content="summary" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..700,0..100&family=EB+Garamond:ital,wght@0,400..700;1,400..600&family=JetBrains+Mono:wght@400;500&display=swap" />
+
+<style>
+  /* ─────────────────────────────────────────────────────────────
+     Tokens
+     ───────────────────────────────────────────────────────────── */
+  :root {
+    --bg:        #0b0f15;
+    --bg-soft:   #111620;
+    --rule:      #1f2733;
+    --grid:      rgba(232, 226, 212, 0.035);
+
+    --ink:       #e8e2d4;       /* warm cream */
+    --ink-soft:  #b6ad9c;
+    --ink-mute:  #6f6757;
+    --ink-faint: #4a4538;
+
+    --gold:      #d4b86a;       /* first principle */
+    --cyan:      #6abec1;       /* conclusions */
+    --mauve:     #c19fb8;       /* pursuits */
+    --coral:     #c97a6f;       /* warning, used sparingly */
+    --leaf:      #9bb38a;       /* desirable */
+
+    --display:  "Fraunces", "Iowan Old Style", "Apple Garamond", Georgia, serif;
+    --body:     "EB Garamond", "Iowan Old Style", Georgia, serif;
+    --mono:     "JetBrains Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+
+    --measure:  68ch;
+    --gutter:   clamp(1.25rem, 4vw, 2.5rem);
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     Reset & base
+     ───────────────────────────────────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    font-family: var(--body);
+    font-size: 19px;
+    line-height: 1.65;
+    color: var(--ink);
+    background: var(--bg);
+    background-image:
+      radial-gradient(var(--grid) 1px, transparent 1px),
+      radial-gradient(circle at 20% 10%, rgba(212, 184, 106, 0.04), transparent 40%),
+      radial-gradient(circle at 80% 90%, rgba(106, 190, 193, 0.04), transparent 50%);
+    background-size: 24px 24px, auto, auto;
+    background-position: -1px -1px, 0 0, 0 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  ::selection { background: rgba(212, 184, 106, 0.25); color: var(--ink); }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--ink-faint);
+    transition: border-color 200ms ease, color 200ms ease;
+  }
+  a:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ─────────────────────────────────────────────────────────────
+     Layout
+     ───────────────────────────────────────────────────────────── */
+  main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: clamp(4rem, 10vw, 7rem) var(--gutter) 6rem;
+  }
+
+  section + section { margin-top: clamp(4rem, 8vw, 6rem); }
+
+  .rule {
+    border: 0;
+    border-top: 1px solid var(--rule);
+    margin: 0;
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     Typography
+     ───────────────────────────────────────────────────────────── */
+  h1, h2, h3 {
+    font-family: var(--display);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin: 0;
+    font-variation-settings: "opsz" 60, "SOFT" 30;
+  }
+  h1 {
+    font-size: clamp(2.6rem, 7vw, 4.4rem);
+    line-height: 1.04;
+    font-weight: 350;
+    letter-spacing: -0.025em;
+    font-variation-settings: "opsz" 144, "SOFT" 80;
+  }
+  h2 {
+    font-size: 0.78rem;
+    font-family: var(--mono);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--ink-mute);
+    margin-bottom: 2rem;
+  }
+  h3 {
+    font-size: 1.6rem;
+    line-height: 1.25;
+    margin-bottom: 0.4rem;
+  }
+
+  p { margin: 0 0 1.1em; max-width: var(--measure); }
+  p:last-child { margin-bottom: 0; }
+
+  em { font-style: italic; color: var(--ink-soft); }
+  strong { font-weight: 500; color: var(--ink); }
+
+  .meta {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--ink-mute);
+    letter-spacing: 0.04em;
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     Hero
+     ───────────────────────────────────────────────────────────── */
+  .hero {
+    padding-top: 1rem;
+  }
+  .hero h1 {
+    margin-bottom: 1.6rem;
+  }
+  .hero h1 .amp {
+    font-style: italic;
+    color: var(--gold);
+    font-variation-settings: "opsz" 144, "SOFT" 100;
+  }
+  .lede {
+    font-size: 1.18rem;
+    color: var(--ink-soft);
+    max-width: 36em;
+    margin-bottom: 2.2rem;
+  }
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--ink-mute);
+    letter-spacing: 0.04em;
+  }
+  .pulse {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--leaf);
+    box-shadow: 0 0 0 0 rgba(155, 179, 138, 0.45);
+    animation: pulse 2.6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(155, 179, 138, 0.45); }
+    50%      { box-shadow: 0 0 0 7px rgba(155, 179, 138, 0); }
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     The Why — framework
+     ───────────────────────────────────────────────────────────── */
+  .why { }
+  .why .stanza {
+    margin-bottom: 2.4rem;
+    max-width: var(--measure);
+  }
+  .why .stanza:last-child { margin-bottom: 0; }
+
+  .principle {
+    font-family: var(--display);
+    font-size: 1.55rem;
+    line-height: 1.35;
+    color: var(--ink);
+    font-style: italic;
+    font-variation-settings: "opsz" 144, "SOFT" 60;
+  }
+  .principle .accent { color: var(--gold); font-style: normal; }
+
+  .pursuits {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin: 2.5rem 0 1.5rem;
+    padding: 2rem 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .pursuit {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+  .pursuit .fn {
+    font-family: var(--mono);
+    font-size: 0.92rem;
+    color: var(--mauve);
+    letter-spacing: -0.01em;
+  }
+  .pursuit .fn .arg { color: var(--ink); font-style: italic; }
+  .pursuit .arrow {
+    font-family: var(--mono);
+    color: var(--ink-faint);
+    font-size: 0.85rem;
+    line-height: 1;
+  }
+  .pursuit .conclusion {
+    font-family: var(--display);
+    font-size: 1.15rem;
+    color: var(--cyan);
+    line-height: 1.25;
+    font-variation-settings: "opsz" 144, "SOFT" 50;
+  }
+  .pursuit .gloss {
+    font-family: var(--mono);
+    font-size: 0.74rem;
+    color: var(--ink-mute);
+    letter-spacing: 0.02em;
+    line-height: 1.4;
+    margin-top: 0.15rem;
+  }
+
+  .kpi {
+    font-family: var(--display);
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+  .kpi .key { font-style: normal; color: var(--ink-mute); font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; margin-right: 0.5rem; }
+
+  @media (max-width: 720px) {
+    .pursuits {
+      grid-template-columns: 1fr;
+      gap: 1.6rem;
+      padding: 1.8rem 0;
+    }
+    .pursuit { flex-direction: row; align-items: baseline; gap: 0.9rem; flex-wrap: wrap; }
+    .pursuit .fn { min-width: 7em; }
+    .pursuit .arrow { display: none; }
+    .pursuit .conclusion { font-size: 1.05rem; }
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     The Work — eras
+     ───────────────────────────────────────────────────────────── */
+  .eras {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+  }
+  .era {
+    display: grid;
+    grid-template-columns: 7.5rem 1fr;
+    gap: 2rem;
+    align-items: baseline;
+    padding-top: 1.6rem;
+    border-top: 1px solid var(--rule);
+  }
+  .era:first-child { padding-top: 0; border-top: 0; }
+  .era .year {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--ink-mute);
+    letter-spacing: 0.06em;
+    padding-top: 0.55rem;
+  }
+  .era .body { }
+  .era h3 {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    flex-wrap: wrap;
+  }
+  .era h3 .role {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-weight: 400;
+    padding-top: 0.2em;
+  }
+  .era p { color: var(--ink-soft); }
+  .era .outcome {
+    display: inline-block;
+    margin-top: 0.6rem;
+    font-family: var(--mono);
+    font-size: 0.74rem;
+    color: var(--ink-mute);
+    letter-spacing: 0.04em;
+  }
+  .era .outcome::before {
+    content: "→ ";
+    color: var(--ink-faint);
+  }
+
+  @media (max-width: 720px) {
+    .era { grid-template-columns: 1fr; gap: 0.5rem; }
+    .era .year { padding-top: 0; }
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     Operating Principles
+     ───────────────────────────────────────────────────────────── */
+  .principles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.2rem 3rem;
+  }
+  .principle-item .label {
+    font-family: var(--mono);
+    font-size: 0.74rem;
+    color: var(--mauve);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    margin-bottom: 0.5rem;
+  }
+  .principle-item p { color: var(--ink-soft); margin: 0; }
+
+  @media (max-width: 640px) {
+    .principles { grid-template-columns: 1fr; gap: 1.8rem; }
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     Footer
+     ───────────────────────────────────────────────────────────── */
+  footer {
+    margin-top: clamp(5rem, 10vw, 7rem);
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .links {
+    display: flex;
+    gap: 1.6rem;
+    flex-wrap: wrap;
+  }
+  .links a {
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    letter-spacing: 0.02em;
+    border-bottom-color: transparent;
+  }
+  .links a:hover { border-bottom-color: var(--gold); }
+  .colophon {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--ink-faint);
+    letter-spacing: 0.04em;
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     Reveal on load
+     ───────────────────────────────────────────────────────────── */
+  .reveal { opacity: 0; transform: translateY(8px); animation: reveal 900ms cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+  .reveal:nth-child(1) { animation-delay: 0.1s; }
+  .reveal:nth-child(2) { animation-delay: 0.25s; }
+  .reveal:nth-child(3) { animation-delay: 0.4s; }
+  .reveal:nth-child(4) { animation-delay: 0.55s; }
+  @keyframes reveal {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, .pulse { animation: none; opacity: 1; transform: none; }
+  }
+</style>
 </head>
 <body>
-    <a class="skip" href="#main">Skip to content</a>
 
-    <header class="site-header wrap">
-        <div class="brand">
-            <h1 class="site-title">Divyaansh Anuj</h1>
-            <p class="tagline">Building systems for exponential human connection.</p>
+<main>
+
+  <!-- ───────────── HERO ───────────── -->
+  <section class="hero">
+    <h1 class="reveal">
+      Divyaansh<br />
+      <span class="amp">&amp;</span> his quiet<br />
+      experiments.
+    </h1>
+    <p class="lede reveal">
+      Founder. Builder of tools for minds — to think, connect, and compound across time.
+      I work at the intersection of <em>information</em> and <em>relationships</em>,
+      and I have been doing it for a decade.
+    </p>
+    <div class="status reveal">
+      <span class="pulse" aria-hidden="true"></span>
+      Currently building VERSE — a private async network for founders.
+    </div>
+  </section>
+
+  <hr class="rule" style="margin-top: clamp(4rem, 9vw, 6rem);" />
+
+  <!-- ───────────── THE WHY ───────────── -->
+  <section class="why">
+    <h2>The Why</h2>
+
+    <div class="stanza">
+      <p class="principle">
+        Everything is <span class="accent">information</span>.<br />
+        The world is a simulation worth taking seriously,<br />
+        and minds are the only things that move it forward.
+      </p>
+    </div>
+
+    <div class="stanza">
+      <p>
+        Two kinds of minds matter from here:
+        the <strong>artificial</strong> ones we are now building, and the
+        <strong>human</strong> ones we have always had. Their alignment, and the
+        velocity of communication between them, is the most important variable of the century.
+      </p>
+      <p>
+        Everything I work on points, eventually, at one outcome:
+        <em>exponential, lossless communication between minds that are aligned.</em>
+        Deeper relationships. Higher productivity. Faster innovation.
+      </p>
+    </div>
+
+    <div class="pursuits" aria-label="Four pursuits">
+
+      <div class="pursuit">
+        <span class="fn">find(<span class="arg">Truth</span>)</span>
+        <span class="arrow">↓</span>
+        <span class="conclusion">Approach infinity</span>
+        <span class="gloss">search for information</span>
+      </div>
+
+      <div class="pursuit">
+        <span class="fn">max(<span class="arg">Beauty</span>)</span>
+        <span class="arrow">↓</span>
+        <span class="conclusion">Build abundance</span>
+        <span class="gloss">shape new information</span>
+      </div>
+
+      <div class="pursuit">
+        <span class="fn">abs(<span class="arg">Equality</span>)</span>
+        <span class="arrow">↓</span>
+        <span class="conclusion">Cultivate connection</span>
+        <span class="gloss">share most information</span>
+      </div>
+
+      <div class="pursuit">
+        <span class="fn">for(<span class="arg">Eternity</span>)</span>
+        <span class="arrow">↓</span>
+        <span class="conclusion">Outlast time</span>
+        <span class="gloss">save all information</span>
+      </div>
+
+    </div>
+
+    <div class="stanza">
+      <p class="kpi">
+        <span class="key">North star</span>
+        Exponential communication, between aligned minds, across time.
+      </p>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- ───────────── THE WORK ───────────── -->
+  <section>
+    <h2>The Work</h2>
+
+    <div class="eras">
+
+      <article class="era">
+        <div class="year">2023 — now</div>
+        <div class="body">
+          <h3>VERSE <span class="role">Founder</span></h3>
+          <p>
+            A private, asynchronous network for founders, operators, and leaders.
+            VERSE uses language models to handle the repetitive, low-signal opening
+            of every new connection, so people can spend their finite attention on
+            the parts of a conversation that actually matter.
+          </p>
+          <p>
+            <em>Same depth, ten times the surface area. No calendars.</em>
+          </p>
+          <a href="https://verseisbetter.com" class="outcome">verseisbetter.com</a>
         </div>
-    </header>
+      </article>
 
-    <main id="main">
-        <section class="hero wrap" aria-labelledby="hero-heading">
-            <div class="hero-grid">
-                <div>
-                    <p class="hero-kicker">Who &amp; what</p>
-                    <h1 id="hero-heading">Divyaansh Anuj</h1>
-                    <p class="hero-sub">Founder &amp; Architect</p>
-                    <p class="hero-body">
-                        I build software that changes how people coordinate, communicate, and create value. Currently, I am the founder and sole developer of <strong>VERSE</strong>, an AI-assisted social protocol designed to eliminate the friction of professional networking. My work is driven by a single thesis: that the most valuable resource in the world is deep, authentic human connection, and that technology should be used to scale it, not replace it.
-                    </p>
-                </div>
-                <aside class="status" aria-label="Current status">
-                    <div class="status-label">
-                        <span class="pulse" aria-hidden="true"></span>
-                        Now
-                    </div>
-                    <p>Currently building while traveling around SE Asia.</p>
-                </aside>
-            </div>
-        </section>
-
-        <section class="wrap" aria-labelledby="work-heading">
-            <div class="section-head">
-                <p class="section-eyebrow">What I have done</p>
-                <h2 class="section-title" id="work-heading">The Eras of Execution</h2>
-                <p class="section-lede">Three chapters of building at the intersection of community, intelligence, and coordination—newest first.</p>
-            </div>
-            <ol class="timeline">
-                <li class="era">
-                    <article class="era-card" aria-labelledby="era-verse-title">
-                        <div class="era-meta">
-                            <p class="phase">Phase III · Present</p>
-                            <p class="timeline-range">2023 – Present</p>
-                        </div>
-                        <h3 class="era-title" id="era-verse-title">VERSE</h3>
-                        <p class="era-role"><span>Role:</span> Founder</p>
-                        <p class="era-desc">
-                            A private, async network for founders and leaders. VERSE uses LLMs to simulate the initial, repetitive stages of a conversation, allowing users to bypass small talk and engage only on the deepest, most meaningful questions. It is a system designed to scale a user's presence without scaling their calendar overhead.
-                        </p>
-                        <div class="era-actions">
-                            <a class="btn" href="https://verseisbetter.com" target="_blank" rel="noopener noreferrer">Visit verseisbetter.com</a>
-                        </div>
-                    </article>
-                </li>
-                <li class="era">
-                    <article class="era-card" aria-labelledby="era-introbot-title">
-                        <div class="era-meta">
-                            <p class="phase">Phase II</p>
-                            <p class="timeline-range">2019 – 2022</p>
-                        </div>
-                        <h3 class="era-title" id="era-introbot-title">Introbot</h3>
-                        <p class="era-role"><span>Role:</span> Founder</p>
-                        <p class="era-desc">
-                            An AI-powered community manager and professional networking assistant. During the second wave of the COVID-19 pandemic in India, Introbot was pivoted to serve as a critical resource-matching tool. It processed over 750,000 SOS queries in 30 days, connecting patients with verified medical supplies and hospital beds, ultimately impacting over 25,000 lives.
-                        </p>
-                        <p class="outcome"><strong>Outcome:</strong> Transitioned out; company remains operational.</p>
-                    </article>
-                </li>
-                <li class="era">
-                    <article class="era-card" aria-labelledby="era-dextra-title">
-                        <div class="era-meta">
-                            <p class="phase">Phase I</p>
-                            <p class="timeline-range">2016 – 2019</p>
-                        </div>
-                        <h3 class="era-title" id="era-dextra-title">Dextra</h3>
-                        <p class="era-role"><span>Role:</span> Founder</p>
-                        <p class="era-desc">
-                            A collaborative platform designed specifically for creative professionals. Dextra functioned as a &ldquo;LinkedIn for creators,&rdquo; scaling to a community of 50,000 active users and successfully raising venture capital.
-                        </p>
-                        <p class="outcome"><strong>Outcome:</strong> Acquired.</p>
-                    </article>
-                </li>
-            </ol>
-        </section>
-
-        <section class="wrap" aria-labelledby="principles-heading">
-            <div class="section-head">
-                <p class="section-eyebrow">Why</p>
-                <h2 class="section-title" id="principles-heading">Mental Models &amp; Frameworks</h2>
-                <p class="section-lede">Operating principles that shape how I design products, teams, and networks.</p>
-            </div>
-            <div class="principles">
-                <article class="principle">
-                    <h3>Information is Fundamental</h3>
-                    <p>Private information forms our individuality; public information forms our collective knowledge. I believe most systemic problems—and their solutions—are rooted in resolving information asymmetry.</p>
-                </article>
-                <article class="principle">
-                    <h3>The Abundance Engine</h3>
-                    <p>I design systems based on positive-sum economics. True scale is not achieved by monetizing a user's finite time, but by creating a network where the value of a connection compounds infinitely for all participants.</p>
-                </article>
-                <article class="principle">
-                    <h3>Asynchronous Depth</h3>
-                    <p>Synchronous communication (meetings, calls) is a bottleneck to scale. I build tools that facilitate deep, meaningful exchanges of thought asynchronously, reserving real-time interaction only for established, high-value relationships.</p>
-                </article>
-                <article class="principle">
-                    <h3>&ldquo;Keep Calm &amp; Do Kaam&rdquo;</h3>
-                    <p>My core operational philosophy. Progress requires sustained, disciplined execution (kaam) anchored by emotional and strategic stability (calm).</p>
-                </article>
-            </div>
-        </section>
-    </main>
-
-    <footer class="site-footer wrap">
-        <div class="footer-inner">
-            <p class="footer-cta">Let&rsquo;s connect on the things that matter.</p>
-            <div class="footer-links">
-                <a href="mailto:divyaansh@verseisbetter.com">divyaansh@verseisbetter.com</a>
-                <a href="https://linkedin.com/in/divyaansh" target="_blank" rel="noopener noreferrer">linkedin.com/in/divyaansh</a>
-            </div>
+      <article class="era">
+        <div class="year">2019 — 2022</div>
+        <div class="body">
+          <h3>Introbot <span class="role">Founder</span></h3>
+          <p>
+            An AI-powered networking assistant that lived inside WhatsApp.
+            During the second wave of COVID-19 in India, it was rebuilt overnight
+            into a resource-matching tool — connecting patients with verified
+            medical supplies and hospital beds. It processed roughly 750,000 SOS
+            queries in 30 days, and impacted around 25,000 lives.
+          </p>
+          <span class="outcome">Transitioned out; company still operating</span>
         </div>
-        <p class="copyright">&copy; <span id="year"></span> Divyaansh Anuj</p>
-    </footer>
+      </article>
 
-    <script>
-        document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
+      <article class="era">
+        <div class="year">2016 — 2019</div>
+        <div class="body">
+          <h3>Dextra <span class="role">Founder</span></h3>
+          <p>
+            A collaboration platform built specifically for creative professionals —
+            designers, illustrators, animators, writers — to find each other and
+            ship work together. Grew to roughly 50,000 active users and 10,000
+            collaborative projects before being acquired.
+          </p>
+          <span class="outcome">Acquired</span>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- ───────────── PRINCIPLES ───────────── -->
+  <section>
+    <h2>Operating Principles</h2>
+
+    <div class="principles">
+
+      <div class="principle-item">
+        <div class="label">i. information is fundamental</div>
+        <p>
+          Most systemic problems — and most of their solutions — are
+          information problems in disguise. Private information forms identity;
+          public information forms civilisation. I design accordingly.
+        </p>
+      </div>
+
+      <div class="principle-item">
+        <div class="label">ii. asynchronous depth</div>
+        <p>
+          Synchronous communication is a bottleneck. Build tools that allow deep,
+          considered exchange across time. Reserve real-time for the relationships
+          that have already earned it.
+        </p>
+      </div>
+
+      <div class="principle-item">
+        <div class="label">iii. abundance over scarcity</div>
+        <p>
+          The best networks are positive-sum: the value to each participant should
+          grow with the size of the whole. If a system requires someone to lose for
+          someone else to win, it is the wrong system.
+        </p>
+      </div>
+
+      <div class="principle-item">
+        <div class="label">iv. keep calm &amp; do kaam</div>
+        <p>
+          <em>Kaam</em>, in Hindi, means work. The right pace is not the fastest
+          one — it is the one that allows clear thinking, sustained effort, and a
+          long enough horizon for compounding to do its job.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ───────────── FOOTER ───────────── -->
+  <footer>
+    <div class="links">
+      <a href="mailto:divyaansh@verseisbetter.com">email</a>
+      <a href="https://x.com/divyaanshanuj" target="_blank" rel="noopener">x</a>
+      <a href="https://linkedin.com/in/divyaansh" target="_blank" rel="noopener">linkedin</a>
+      <a href="https://github.com/divyaansh" target="_blank" rel="noopener">github</a>
+    </div>
+    <div class="colophon">
+      Divyaansh Anuj · in motion since 2014
+    </div>
+  </footer>
+
+</main>
+
 </body>
 </html>
