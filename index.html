@@ -34,13 +34,14 @@
     --ink-soft:  #b6ad9c;
     --ink-mute:  #6f6757;
     --ink-faint: #4a4538;
-
-    --gold:      #d4b86a;       /* first principle */
-    --cyan:      #6abec1;       /* ultimate conclusion */
-    --mauve:     #c19fb8;       /* core pursuit */
-    --leaf:      #9bb38a;       /* desirable result */
-    --sky:       #7aa6cc;       /* high-influence (human minds) */
-    --rose:      #c19a8c;       /* the stake */
+    
+    --gold:      #d4b86a;       /* principle */
+    --mauve:     #c19fb8;       /* pursuit */
+    --sky:       #7aa6cc;       /* human */
+    --orange:    #d49a6a;       /* ai */
+    --cyan:      #6abec1;       /* conclusion */
+    --leaf:      #9bb38a;       /* desirable */
+    --rose:      #c19a8c;       /* undesirable */
 
     --display:   "Fraunces", "Iowan Old Style", "Apple Garamond", Georgia, serif;
     --body:      "EB Garamond", "Iowan Old Style", Georgia, serif;
@@ -144,6 +145,7 @@
   .c-mauve { color: var(--mauve); font-style: italic; }
   .c-leaf  { color: var(--leaf); }
   .c-sky   { color: var(--sky); }
+  .c-orange{ color: var(--orange); }
   .c-rose  { color: var(--rose); }
 
   /* ─────────────────────────────────────────────────────────────
@@ -263,7 +265,7 @@
     line-height: 1.2;
   }
   .mind-card.human .mind-name { color: var(--sky); }
-  .mind-card.ai     .mind-name { color: var(--ink-soft); }
+  .mind-card.ai     .mind-name { color: var(--orange); }
   .mind-card .mind-tag {
     margin-top: 0.6rem;
     font-family: var(--mono);
@@ -310,18 +312,11 @@
   }
 
   /* ─────────────────────────────────────────────────────────────
-     The Map — wide whiteboard recreation
+     The Map — vertical, elegant
      ───────────────────────────────────────────────────────────── */
   .map-wrap {
     margin: 2rem auto 0;
-    width: 100%;
-    max-width: 1180px;
-    /* break out of the 860px main column */
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 0 var(--gutter);
-    box-sizing: border-box;
+    max-width: 720px;
   }
   .map-svg {
     width: 100%;
@@ -330,53 +325,21 @@
     overflow: visible;
   }
 
-  /* Key box (left) */
-  .m-key-header {
-    font-family: var(--mono);
-    font-weight: 500;
-    font-size: 13px;
-    fill: var(--ink);
-  }
-  .m-key-item {
-    font-family: var(--display);
-    font-size: 14px;
-  }
-  .m-key-bold {
-    font-family: var(--display);
-    font-size: 14px;
-    font-weight: 500;
-  }
-  .m-key-box {
-    fill: none;
-    stroke: var(--ink-faint);
-    stroke-dasharray: 4 4;
-  }
-  .m-key-footnote {
-    font-family: var(--display);
-    font-size: 12px;
-    fill: var(--ink-soft);
-    font-style: italic;
-  }
-  .m-key-footnote-bold {
-    font-family: var(--display);
-    font-size: 12px;
-    font-weight: 500;
-    fill: var(--cyan);
-  }
-
-  /* Top: first principle */
+  /* Top */
   .m-title-text {
     font-family: var(--display);
     font-style: italic;
-    font-size: 18px;
+    font-size: 22px;
     fill: var(--gold);
   }
   .m-keystone-md {
     font-family: var(--display);
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 24px;
+    font-weight: 400;
     fill: var(--gold);
+    font-variation-settings: "opsz" 144, "SOFT" 60;
   }
+  .m-rule { stroke: var(--ink-soft); stroke-width: 1; }
 
   /* Two minds */
   .m-mind-text {
@@ -384,79 +347,209 @@
     font-size: 16px;
   }
   .m-mind-human { fill: var(--sky); }
-  .m-mind-ai    { fill: var(--ink-soft); }
+  .m-mind-ai    { fill: var(--orange); }
+  .m-mind-sub {
+    font-family: var(--mono);
+    font-size: 9px;
+    fill: var(--ink-mute);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
 
   /* Pursuits (alignment, acceleration) */
   .m-pursuit-text {
     font-family: var(--display);
     font-style: italic;
-    font-size: 16px;
+    font-size: 17px;
     fill: var(--mauve);
   }
-  .m-pursuit-bold {
+  .m-pursuit-text-large {
     font-family: var(--display);
-    font-size: 14px;
-    font-weight: 600;
+    font-style: italic;
+    font-size: 22px;
     fill: var(--mauve);
+    font-variation-settings: "opsz" 144, "SOFT" 60;
+  }
+  .m-pursuit-tag {
+    font-family: var(--mono);
+    font-size: 9px;
+    fill: var(--mauve);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    opacity: 0.85;
+  }
+  .m-pursuit-cap {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 11.5px;
+    fill: var(--mauve);
+    opacity: 0.78;
   }
 
-  /* Side outcomes (leaf) */
-  .m-leaf-text {
+  /* The lever — Exponential Communication, central focal point */
+  .m-lever-eyebrow {
+    font-family: var(--mono);
+    font-size: 9.5px;
+    fill: var(--gold);
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    opacity: 0.78;
+  }
+  .m-lever-text {
     font-family: var(--display);
+    font-size: 26px;
+    font-weight: 400;
+    fill: var(--gold);
+    letter-spacing: 0.12em;
+    font-variation-settings: "opsz" 144, "SOFT" 80;
+  }
+  .m-lever-footnote {
+    font-family: var(--mono);
+    font-style: italic;
+    font-size: 9px;
+    fill: var(--gold);
+    opacity: 0.7;
+    letter-spacing: 0.05em;
+  }
+  .m-eyebrow {
+    font-family: var(--mono);
+    font-size: 9px;
+    fill: var(--ink-mute);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+  .m-outcome-text {
+    font-family: var(--display);
+    font-style: italic;
     font-size: 13px;
     fill: var(--leaf);
   }
+
+  /* Side branches */
   .m-rose-text {
     font-family: var(--display);
-    font-size: 13px;
-    fill: var(--rose);
     font-style: italic;
+    font-size: 12px;
+    fill: var(--rose);
+  }
+  .m-leaf-bold {
+    font-family: var(--display);
+    font-size: 12px;
+    font-weight: 600;
+    fill: var(--leaf);
+  }
+  .m-leaf-text {
+    font-family: var(--display);
+    font-size: 11px;
+    fill: var(--leaf);
   }
 
   /* Function row */
   .m-fn-text {
-    font-family: var(--display);
-    font-size: 15px;
+    font-family: var(--mono);
+    font-size: 13px;
     fill: var(--leaf);
   }
   .m-fn-text .m-arg {
     font-family: var(--display);
     font-style: italic;
+    font-size: 14px;
     fill: var(--leaf);
   }
 
-  /* Conclusions */
+  /* Conclusions (cyan, two lines) */
   .m-conclusion-text {
     font-family: var(--display);
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 15px;
+    font-weight: 500;
     fill: var(--cyan);
   }
 
-  /* Actions (italic, cyan) */
+  /* Actions (cyan italic, two lines) */
   .m-action-text {
     font-family: var(--display);
     font-style: italic;
-    font-size: 13px;
+    font-size: 16px;
     fill: var(--cyan);
-    font-weight: 600;
   }
 
-  /* Lines, arrows */
-  .m-line   { stroke: var(--ink-soft); stroke-width: 1; fill: none; }
-  .m-line-mute { stroke: var(--ink-mute); stroke-width: 1; fill: none; }
-  .m-arrow-head { fill: var(--ink-soft); }
+  /* Lines */
+  .m-line       { stroke: var(--ink-soft); stroke-width: 1; fill: none; }
+  .m-line-mute  { stroke: var(--ink-mute);  stroke-width: 1; fill: none; }
+  .m-line-faint { stroke: var(--ink-faint); stroke-width: 1; fill: none; }
 
-  /* Mobile: scroll diagram horizontally rather than crush it */
-  @media (max-width: 720px) {
+  /* Glow on alignment */
+  .m-glow circle {
+    transform-origin: 360px 380px;
+    animation: glowPulse 5.5s ease-in-out infinite;
+  }
+  @keyframes glowPulse {
+    0%, 100% { opacity: 0.85; transform: scale(1); }
+    50%      { opacity: 1;    transform: scale(1.06); }
+  }
+
+  /* HTML Key — below the SVG, responsive */
+  .map-key {
+    margin: 2.4rem auto 0;
+    max-width: 720px;
+    padding-top: 1.4rem;
+    border-top: 1px solid var(--rule);
+  }
+  .key-row {
+    display: flex;
+    gap: 0.8rem 1.6rem;
+    flex-wrap: wrap;
+    font-family: var(--mono);
+    font-size: 0.74rem;
+    letter-spacing: 0.04em;
+    color: var(--ink-soft);
+    margin-bottom: 0.6rem;
+  }
+  .key-row:last-of-type { margin-bottom: 0; }
+  .key-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+  .dot-gold  { background: var(--gold); }
+  .dot-mauve { background: var(--mauve); }
+  .dot-cyan  { background: var(--cyan); }
+  .dot-sky   { background: var(--sky); }
+  .dot-mute  { background: var(--orange); }
+  .dot-leaf  { background: var(--leaf); }
+  .dot-rose  { background: var(--rose); }
+
+  .key-fns {
+    margin-top: 0.9rem;
+    padding-top: 0.9rem;
+    border-top: 1px dashed var(--rule);
+    display: flex;
+    gap: 0.6rem 1.6rem;
+    flex-wrap: wrap;
+    font-family: var(--mono);
+    font-size: 0.74rem;
+    letter-spacing: 0.04em;
+    color: var(--ink-mute);
+  }
+  .key-fn { display: inline-flex; align-items: baseline; gap: 0.45rem; }
+  .key-fn .fn-mark { font-weight: 500; }
+  .key-fn .fn-mark.leaf { color: var(--leaf); }
+  .key-fn .fn-mark.cyan { color: var(--cyan); }
+
+  /* Mobile: scroll the SVG if viewport too narrow */
+  @media (max-width: 600px) {
     .map-wrap {
-      max-width: 100vw;
-      padding: 0;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
     }
     .map-svg {
-      min-width: 760px;
+      min-width: 540px;
     }
   }
 
@@ -742,6 +835,99 @@
   }
 
   /* ─────────────────────────────────────────────────────────────
+     Milestones — the roadmap (M0 → M4)
+     ───────────────────────────────────────────────────────────── */
+  .milestones {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    margin-top: 1rem;
+    max-width: 720px;
+  }
+  .milestone {
+    display: grid;
+    grid-template-columns: 5rem 1fr;
+    column-gap: 2rem;
+    align-items: start;
+  }
+  .milestone-num {
+    font-family: var(--display);
+    font-size: clamp(2.2rem, 5vw, 2.8rem);
+    line-height: 1;
+    color: var(--gold);
+    letter-spacing: 0.02em;
+    text-align: center;
+    user-select: none;
+    font-variation-settings: "opsz" 144, "SOFT" 100;
+    margin-top: -0.05em;
+  }
+  .milestone-num .m-prefix {
+    font-size: 0.55em;
+    color: var(--ink-mute);
+    font-style: italic;
+    margin-right: 0.05em;
+  }
+  .milestone-body { padding-top: 0.3rem; }
+  .milestone-title {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 1.5rem;
+    line-height: 1.25;
+    color: var(--ink);
+    margin-bottom: 0.7rem;
+    font-variation-settings: "opsz" 144, "SOFT" 60;
+  }
+  .milestone.featured .milestone-title { color: var(--gold); }
+  .milestone-acronym {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--ink-soft);
+    margin-bottom: 0.9rem;
+    line-height: 1.4;
+  }
+  .milestone-acronym em { font-style: italic; color: inherit; }
+  .milestone-acronym strong {
+    color: var(--gold);
+    font-weight: 500;
+    font-style: normal;
+  }
+  .milestone-desc {
+    color: var(--ink-soft);
+    font-size: 0.97rem;
+    margin-bottom: 0.9rem;
+    line-height: 1.55;
+  }
+  .milestone-goal {
+    font-family: var(--mono);
+    font-size: 0.74rem;
+    color: var(--ink-mute);
+    letter-spacing: 0.04em;
+  }
+  .milestone-goal::before {
+    content: "→ enables ";
+    color: var(--ink-faint);
+  }
+  .milestone-goal .goal-name {
+    font-family: var(--display);
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--cyan);
+    letter-spacing: 0;
+  }
+  .milestone-goal.no-goal::before { content: "→ "; color: var(--ink-faint); }
+  /* .milestone-goal.no-goal .goal-name { color: var(--ink-soft); } */
+  .milestone-goal.unreachable::before { content: "→ tends to "; color: var(--leaf); }
+  /* .milestone-goal.unreachable .goal-name { color: var(--leaf); } */
+  .milestone-goal.binary::before { content: "→ toggles "; color: var(--leaf); }
+  .milestone-goal.binary .goal-name { color: var(--leaf); }
+
+  @media (max-width: 600px) {
+    .milestone { grid-template-columns: 1fr; row-gap: 0.5rem; }
+    .milestone-num { text-align: left; font-size: 1.8rem; margin-bottom: 0.2rem; }
+  }
+
+  /* ─────────────────────────────────────────────────────────────
      Footer
      ───────────────────────────────────────────────────────────── */
   footer {
@@ -804,411 +990,27 @@
       the Final Frontier
     </h1>
     <p class="lede reveal">
-      Founder. Working on the bottleneck between minds — because everything else
-      I want to happen, including the day death becomes optional, depends on it.
+      Solving the bottleneck between minds — because everything else depends on it.
     </p>
     <div class="status reveal">
       <span class="pulse" aria-hidden="true"></span>
-      Currently building VERSE &middot; exponential communication for minds.
+      Currently building VERSE &middot; social network for extraordinary minds.
     </div>
   </section>
 
   <hr class="rule" />
 
-  <!-- ───────────── FIRST PRINCIPLE ───────────── -->
+  <!-- ───────────── STORY ───────────── -->
   <section>
-    <h2>The First Principle</h2>
-    <p class="axiom">
-      <span class="accent">Everything</span> is information.
-    </p>
-    <p class="axiom-sub">
-      The world is a simulation worth taking seriously. Matter, energy,
-      thought, conversation — every one of them is a pattern of bits. Once
-      that frame snaps into place, every other question downstream becomes
-      a question about <em>which bits</em>, and <em>which minds get to touch them</em>.
-    </p>
-  </section>
-
-  <hr class="rule" />
-
-  <!-- ───────────── TWO MINDS ───────────── -->
-  <section>
-    <h2>Two Kinds of Minds</h2>
-    <p>
-      In a universe made of information, only two things can hold and move it:
-      the <span class="c-sky">human</span> minds we have always had, and the
-      <span class="c-mute">artificial</span> ones we are now building. These are
-      the only two players on the board, for the rest of this century at least.
-    </p>
-
-    <div class="minds-visual" aria-hidden="true">
-      <div class="mind-card human">
-        <div class="mind-label">High influence</div>
-        <div class="mind-name">empowered<br />human minds</div>
-        <div class="mind-tag">substrate · meaning</div>
-      </div>
-      <div class="mind-bridge">alignment</div>
-      <div class="mind-card ai">
-        <div class="mind-label">Augmenting</div>
-        <div class="mind-name">artificial<br />minds</div>
-        <div class="mind-tag">leverage · speed</div>
-      </div>
-    </div>
-
-    <p>
-      What we seek &mdash; <em>within</em> each group, and <em>across</em> them &mdash;
-      is one thing: <span class="c-mauve">alignment</span>. Without it, more
-      capability is not a gift; it is a hazard.
-    </p>
-  </section>
-
-  <hr class="rule" />
-
-  <!-- ───────────── ALIGNMENT → ACCELERATION ───────────── -->
-  <section>
-    <h2>Alignment &rarr; Acceleration</h2>
-
-    <div class="pursuit-flow" aria-hidden="true">
-      <span>alignment</span>
-      <span class="arrow">&rarr;</span>
-      <span>acceleration</span>
-    </div>
-
-    <p class="principle-line">
-      Only through alignment can we enable acceleration.
-    </p>
-    <p style="margin-top: 1.4rem;">
-      Acceleration is not a metaphor here. It is the rate at which the four
-      goals below get closer. Three of them are endless. One of them is not &mdash;
-      and that one is on a clock. The diagram below is the entire map.
-    </p>
-  </section>
-
-  <hr class="rule" />
-
-  <!-- ───────────── THE MAP ───────────── -->
-  <section>
-    <h2>The Map</h2>
-
-    <p style="max-width: var(--measure); color: var(--ink-soft); margin-bottom: 0.5rem;">
-      One diagram for everything I work on. Read top to bottom: from the first
-      principle, down through the two kinds of minds, through the bottleneck
-      that gates them, and out into the four operations on information that
-      every meaningful goal turns out to be.
-    </p>
-
-    <div class="map-wrap">
-      <svg
-        class="map-svg"
-        viewBox="0 0 1200 660"
-        xmlns="http://www.w3.org/2000/svg"
-        role="img"
-        aria-labelledby="map-title map-desc"
-      >
-        <title id="map-title">The throughline: from "everything is information" down to the four fundamental operations on information.</title>
-        <desc id="map-desc">
-          A wide diagram with a key on the left and the main chart on the right.
-          The chart starts with "everything is information" and "the world is a simulation",
-          then branches into two kinds of minds — artificial (low influence) and empowered
-          human (high influence) — which seek alignment with each other. Misalignment is the
-          undesirable result on one side; exponential communication, the primary KPI, is the
-          desirable result on the other. Through alignment we get acceleration, which fans
-          into four functions on information: find(Truth), max(Beauty), abs(Equality), for(Eternity).
-          Each leads to an ultimate conclusion — Approach infinity, Build abundance, Cultivate
-          connection, Destroy death — and resolves, fundamentally, to one of four actions on
-          information: search for, shape new, share most, save all. A side panel ties Life
-          (friendship, family, love) back to alignment, and Work (sales, funding, advice) back
-          to acceleration, with three outcomes in between: deeper relationships, higher
-          productivity, faster innovation. The destruction of death is the personal mission —
-          the Final Frontier.
-        </desc>
-
-        <defs>
-          <marker id="arr-end" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="strokeWidth">
-            <path d="M0,0 L0,9 L8,4.5 z" fill="#b6ad9c"/>
-          </marker>
-          <marker id="arr-start" markerWidth="9" markerHeight="9" refX="2" refY="4.5" orient="auto" markerUnits="strokeWidth">
-            <path d="M9,0 L9,9 L1,4.5 z" fill="#b6ad9c"/>
-          </marker>
-        </defs>
-
-        <!-- ============== KEY (left) ============== -->
-        <text x="30" y="46" class="m-key-header">Key:</text>
-        <rect class="m-key-box" x="20" y="70" width="220" height="365" rx="2"/>
-
-        <text x="40" y="110" class="m-key-bold" fill="#d4b86a">First principle</text>
-
-        <text x="40" y="148" class="m-key-item" fill="#7aa6cc">High influence</text>
-        <text x="40" y="178" class="m-key-item" fill="#b6ad9c">Low influence</text>
-
-        <text x="40" y="222" class="m-key-bold" fill="#c19fb8">Core pursuit</text>
-
-        <text x="40" y="262" class="m-key-item" fill="#9bb38a">Desirable result</text>
-        <text x="40" y="292" class="m-key-item" fill="#c19a8c">Undesirable result</text>
-
-        <text x="40" y="335" class="m-key-bold" fill="#6abec1">Ultimate conclusion</text>
-
-        <!-- Footnotes (below key) -->
-        <text x="30" y="475" class="m-key-footnote" fill="#9bb38a">*Primary KPI</text>
-
-        <text x="30" y="510" class="m-key-footnote-bold">**Personal mission</text>
-        <text x="30" y="528" class="m-key-footnote-bold">a.k.a. Final Frontier</text>
-
-        <!-- ============== MAIN CHART ============== -->
-
-        <!-- Top: everything is information -->
-        <text x="580" y="35" text-anchor="middle" class="m-title-text">everything is information</text>
-
-        <!-- bidirectional arrow ↕ between principle and simulation -->
-        <line x1="580" y1="50" x2="580" y2="92" class="m-line"
-              marker-start="url(#arr-start)" marker-end="url(#arr-end)"/>
-
-        <!-- The world is a simulation -->
-        <text x="580" y="110" text-anchor="middle" class="m-keystone-md">The world is a simulation</text>
-
-        <!-- Branches down to two minds -->
-        <line x1="555" y1="125" x2="465" y2="195" class="m-line" marker-end="url(#arr-end)"/>
-        <line x1="605" y1="125" x2="710" y2="195" class="m-line" marker-end="url(#arr-end)"/>
-
-        <!-- Two minds -->
-        <text x="450" y="215" text-anchor="middle" class="m-mind-text m-mind-ai">Artificial minds</text>
-        <text x="720" y="215" text-anchor="middle" class="m-mind-text m-mind-human">Empowered human minds</text>
-
-        <!-- Horizontal connecting line between the two minds -->
-        <line x1="510" y1="222" x2="640" y2="222" class="m-line-mute"/>
-
-        <!-- Alignment triangle: two slanted lines converging at apex -->
-        <line x1="465" y1="232" x2="580" y2="365" class="m-line"/>
-        <line x1="700" y1="232" x2="580" y2="365" class="m-line"/>
-
-        <!-- alignment label inside triangle -->
-        <text x="580" y="290" text-anchor="middle" class="m-pursuit-text">alignment</text>
-
-        <!-- Branch: Artificial minds → Potential misalignment (down-left) -->
-        <line x1="420" y1="232" x2="345" y2="335" class="m-line" marker-end="url(#arr-end)"/>
-        <text x="345" y="355" text-anchor="middle" class="m-rose-text">Potential misalignment</text>
-
-        <!-- Branch: Empowered human minds → Exponential communication (down-right) -->
-        <line x1="745" y1="232" x2="820" y2="335" class="m-line" marker-end="url(#arr-end)"/>
-        <text x="830" y="355" text-anchor="middle" class="m-leaf-text">Exponential communication*</text>
-
-        <!-- acceleration label below the triangle apex -->
-        <text x="580" y="385" text-anchor="middle" class="m-pursuit-text">acceleration</text>
-
-        <!-- 4 fan-out arrows from acceleration to functions -->
-        <line x1="565" y1="398" x2="320" y2="430" class="m-line" marker-end="url(#arr-end)"/>
-        <line x1="575" y1="398" x2="480" y2="430" class="m-line" marker-end="url(#arr-end)"/>
-        <line x1="590" y1="398" x2="660" y2="430" class="m-line" marker-end="url(#arr-end)"/>
-        <line x1="600" y1="398" x2="820" y2="430" class="m-line" marker-end="url(#arr-end)"/>
-
-        <!-- Function row -->
-        <text x="320" y="450" text-anchor="middle" class="m-fn-text">find(<tspan class="m-arg" font-style="italic">Truth</tspan>)</text>
-        <text x="480" y="450" text-anchor="middle" class="m-fn-text">max(<tspan class="m-arg" font-style="italic">Beauty</tspan>)</text>
-        <text x="660" y="450" text-anchor="middle" class="m-fn-text">abs(<tspan class="m-arg" font-style="italic">Equality</tspan>)</text>
-        <text x="820" y="450" text-anchor="middle" class="m-fn-text">for(<tspan class="m-arg" font-style="italic">Eternity</tspan>)</text>
-
-        <!-- Horizontal arrows between functions -->
-        <line x1="365" y1="446" x2="430" y2="446" class="m-line" marker-end="url(#arr-end)"/>
-        <line x1="525" y1="446" x2="610" y2="446" class="m-line" marker-end="url(#arr-end)"/>
-        <line x1="710" y1="446" x2="770" y2="446" class="m-line" marker-end="url(#arr-end)"/>
-
-        <!-- Down arrows from functions to conclusions -->
-        <line x1="320" y1="465" x2="320" y2="495" class="m-line" marker-end="url(#arr-end)"/>
-        <line x1="480" y1="465" x2="480" y2="495" class="m-line" marker-end="url(#arr-end)"/>
-        <line x1="660" y1="465" x2="660" y2="495" class="m-line" marker-end="url(#arr-end)"/>
-        <line x1="820" y1="465" x2="820" y2="495" class="m-line" marker-end="url(#arr-end)"/>
-
-        <!-- Conclusion row (cyan, bold) -->
-        <text x="320" y="515" text-anchor="middle" class="m-conclusion-text">Approach infinity</text>
-        <text x="480" y="515" text-anchor="middle" class="m-conclusion-text">Build abundance</text>
-        <text x="660" y="515" text-anchor="middle" class="m-conclusion-text">Cultivate connection</text>
-        <text x="820" y="515" text-anchor="middle" class="m-conclusion-text">Destroy death**</text>
-
-        <!-- Bidirectional arrows from conclusion to action -->
-        <line x1="320" y1="528" x2="320" y2="572" class="m-line"
-              marker-start="url(#arr-start)" marker-end="url(#arr-end)"/>
-        <line x1="480" y1="528" x2="480" y2="572" class="m-line"
-              marker-start="url(#arr-start)" marker-end="url(#arr-end)"/>
-        <line x1="660" y1="528" x2="660" y2="572" class="m-line"
-              marker-start="url(#arr-start)" marker-end="url(#arr-end)"/>
-        <line x1="820" y1="528" x2="820" y2="572" class="m-line"
-              marker-start="url(#arr-start)" marker-end="url(#arr-end)"/>
-
-        <!-- Action row (cyan italic) — the fundamental layer -->
-        <text x="320" y="592" text-anchor="middle" class="m-action-text">search for information</text>
-        <text x="480" y="592" text-anchor="middle" class="m-action-text">shape new information</text>
-        <text x="660" y="592" text-anchor="middle" class="m-action-text">share most information</text>
-        <text x="820" y="592" text-anchor="middle" class="m-action-text">save all information</text>
-
-        <!-- ============== RIGHT PANEL ============== -->
-
-        <!-- Life label -->
-        <text x="1050" y="278" text-anchor="middle" class="m-pursuit-bold">Life: Friendship, Family, Love</text>
-
-        <!-- Bidirectional arrow: alignment ↔ Life -->
-        <line x1="640" y1="278" x2="935" y2="278" class="m-line"
-              marker-start="url(#arr-start)" marker-end="url(#arr-end)"/>
-
-        <!-- Bracket on the left of the 3 outcomes -->
-        <line x1="932" y1="320" x2="932" y2="370" class="m-line-mute"/>
-        <line x1="932" y1="320" x2="938" y2="320" class="m-line-mute"/>
-        <line x1="932" y1="370" x2="938" y2="370" class="m-line-mute"/>
-
-        <!-- Three outcomes (leaf) -->
-        <text x="1050" y="328" text-anchor="middle" class="m-leaf-text">Deeper Relationships</text>
-        <text x="1050" y="346" text-anchor="middle" class="m-leaf-text">Higher Productivity</text>
-        <text x="1050" y="364" text-anchor="middle" class="m-leaf-text">Faster Innovation</text>
-
-        <!-- Arrow: Exponential communication → outcomes bracket -->
-        <line x1="900" y1="346" x2="928" y2="346" class="m-line" marker-end="url(#arr-end)"/>
-
-        <!-- Work label -->
-        <text x="1050" y="396" text-anchor="middle" class="m-pursuit-bold">Work: Sales, Funding, Advice</text>
-
-        <!-- Bidirectional arrow: acceleration ↔ Work -->
-        <line x1="640" y1="395" x2="935" y2="395" class="m-line"
-              marker-start="url(#arr-start)" marker-end="url(#arr-end)"/>
-
-      </svg>
-    </div>
-  </section>
-
-  <hr class="rule" />
-
-  <!-- ───────────── ASYMMETRY ───────────── -->
-  <section>
-    <h2>Endless &middot; Binary</h2>
-
-    <p class="principle-line">
-      Truth, Beauty, and Equality are <em>noble, endless</em> pursuits.<br />
-      Eternity is <strong>binary, time-bound</strong>.
-    </p>
-
-    <div class="asym-grid" aria-hidden="true">
-      <div class="asym-col endless">
-        <div class="asym-label">Endless &middot; horizon recedes</div>
-        <div class="asym-item">
-          find(<span class="asym-arg">Truth</span>)
-          <span class="asym-meaning">search for information &rarr; approach infinity</span>
-        </div>
-        <div class="asym-item">
-          max(<span class="asym-arg">Beauty</span>)
-          <span class="asym-meaning">shape new information &rarr; build abundance</span>
-        </div>
-        <div class="asym-item">
-          abs(<span class="asym-arg">Equality</span>)
-          <span class="asym-meaning">share most information &rarr; cultivate connection</span>
-        </div>
-      </div>
-
-      <div class="asym-col binary">
-        <div class="asym-label">Binary &middot; finish line exists</div>
-        <div class="asym-item">
-          for(<span class="asym-arg">Eternity</span>)
-          <span class="asym-meaning">save all information &rarr; destroy death</span>
-        </div>
-      </div>
-    </div>
-
-    <p style="margin-top: 1rem;">
-      The asymmetry matters. You cannot run out of clock chasing Truth, Beauty, or Equality
-      &mdash; the next generation can pick up wherever you left off.
-      Eternity is different. It gets won, or it doesn't. It is literally on a clock.
-    </p>
-
-    <div class="stake">
-      <div class="stake-num">150,000</div>
-      <div class="stake-line">people die every day.</div>
-      <div class="ticker-live">
-        Since you opened this page, <span id="death-counter" class="ticker-num">0</span>
-        have died.
-      </div>
-    </div>
-
-    <div class="frontier">
-      <div class="label">The mission</div>
-      <div class="name">the Final Frontier</div>
-      <p>
-        The day death becomes optional. Pulling that day closer is my personal mission &mdash; and everything I do is to make it happen.
-      </p>
-    </div>
-  </section>
-
-  <hr class="rule" />
-
-  <!-- ───────────── THE BOTTLENECK ───────────── -->
-  <section>
-    <h2>The Bottleneck</h2>
-
-    <p>
-      Alignment must scale, and acceleration must compound. The bottleneck on
-      both &mdash; especially for human minds &mdash; is the same one:
-      <em>communication</em>.
-    </p>
-    <p class="principle-line" style="margin-top: 1.6rem;">
-      Bend the rate at which minds can find, transmit and verify each other's
-      signal &mdash; and you bend the timeline on every goal downstream.
-    </p>
-    <p style="margin-top: 1.6rem;">
-      That is why a communication product can sit underneath a mortality
-      mission without it being a stretch. The lever is upstream of everything.
-    </p>
-  </section>
-
-  <hr class="rule" />
-
-  <!-- ───────────── VERSE ───────────── -->
-  <section>
-    <h2>VERSE &middot; Exponential Communication</h2>
-
-    <p>
-      VERSE is the lever I have chosen. A private, asynchronous network where
-      language models handle the repetitive opening of every connection &mdash;
-      so finite human attention can be spent only on the parts of a
-      conversation that actually matter.
-    </p>
-    <p>
-      <em>Same depth. Ten times the surface area. No calendars.</em>
-    </p>
-
-    <div class="verse-split">
-      <div class="verse-card">
-        <div class="vc-label">Life</div>
-        <div class="vc-words">friendship &middot; family &middot; love</div>
-        <div class="vc-effect">alignment between minds</div>
-      </div>
-      <div class="verse-card">
-        <div class="vc-label">Work</div>
-        <div class="vc-words">sales &middot; funding &middot; advice</div>
-        <div class="vc-effect">acceleration toward the goals</div>
-      </div>
-    </div>
-
-    <p class="verse-outcomes">
-      deeper relationships<span class="sep">&middot;</span>
-      higher productivity<span class="sep">&middot;</span>
-      faster innovation
-    </p>
-
-    <p style="margin-top: 2rem;">
-      <a href="https://verseisbetter.com" target="_blank" rel="noopener">verseisbetter.com</a>
-    </p>
-  </section>
-
-  <hr class="rule" />
-
-  <!-- ───────────── THE WORK: D · I · V ───────────── -->
-  <section>
-    <h2>The Work &middot; D &middot; I &middot; V</h2>
+    <h2>The Story</h2>
 
     <p class="work-aside">
       My life has been a trajectory leading to this single moment &mdash;
-      making exponential communication happen. I noticed only afterwards: the
-      initials of my three companies &mdash;
+      making exponential communication happen. Semi-coincidentally, the initials of my three companies &mdash;
       <span class="di-v">D</span>extra,
       <span class="di-v">I</span>ntrobot,
       <span class="di-v">V</span>ERSE &mdash;
-      are the same three letters my parents gave me.
+      spell the name my friends call me.
     </p>
 
     <div class="eras">
@@ -1266,7 +1068,515 @@
 
   <hr class="rule" />
 
-  <!-- ───────────── CAAM ───────────── -->
+  <!-- ───────────── CONCEPT ───────────── -->
+  <section>
+    <h2>The CONCEPT</h2>
+
+    <p>
+      VERSE is a private, asynchronous network where
+      language models handle the repetitive opening of every connection &mdash;
+      so finite human attention can be spent only on the parts of a
+      conversation that actually matter.
+    </p>
+    <p>
+      <em>Same depth. Ten times the surface area. No calendars.</em>
+    </p>
+
+    <div class="verse-split">
+      <div class="verse-card">
+        <div class="vc-label">Life</div>
+        <div class="vc-words">friendship &middot; family &middot; love</div>
+        <div class="vc-effect">alignment between minds</div>
+      </div>
+      <div class="verse-card">
+        <div class="vc-label">Work</div>
+        <div class="vc-words">sales &middot; funding &middot; advice</div>
+        <div class="vc-effect">acceleration toward the goals</div>
+      </div>
+    </div>
+
+    <p class="verse-outcomes">
+      deeper relationships<span class="sep">&middot;</span>
+      higher productivity<span class="sep">&middot;</span>
+      faster innovation
+    </p>
+
+    <p style="margin-top: 2rem;">
+      <a href="https://verseisbetter.com" target="_blank" rel="noopener">verseisbetter.com</a>
+    </p>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- ───────────── PRINCIPLE ───────────── -->
+  <section>
+    <h2>The Principle</h2>
+    <p class="axiom">
+      <span class="accent">Everything</span> is information.
+    </p>
+    <p class="axiom-sub">
+      The world is a simulation.
+      Matter, energy, thought, conversation — every one of them is a pattern of bits.
+      Once that frame snaps into place, every other question downstream
+      is answered by understanding and organizing data.
+    </p>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- ───────────── PHILOSOPHY ───────────── -->
+  <section>
+    <h2>The Philosophy</h2>
+    <p>
+      Only two things can understand and organize information:
+      the <span class="c-sky">human</span> minds we have always had, and the
+      <span class="c-orange">artificial</span> ones we are now building. These are
+      the only two players on the board.
+    </p>
+
+    <div class="minds-visual" aria-hidden="true">
+      <div class="mind-card human">
+        <div class="mind-label">Empowered</div>
+        <div class="mind-name">human</div>
+        <div class="mind-tag">minds</div>
+      </div>
+      <div class="mind-bridge">alignment</div>
+      <div class="mind-card ai">
+        <div class="mind-label">Augmented</div>
+        <div class="mind-name">artificial</div>
+        <div class="mind-tag">minds</div>
+      </div>
+    </div>
+
+    <p>
+      What we seek &mdash; <em>within</em> each group, and <em>across</em> them &mdash;
+      is one thing: <span class="c-mauve">alignment</span>. Without it, more
+      capability is not a gift; it is a hazard.
+    </p>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- ───────────── PATH ───────────── -->
+  <section>
+    <h2>The Path</h2>
+
+    <div class="pursuit-flow" aria-hidden="true">
+      <span>alignment</span>
+      <span class="arrow">&rarr;</span>
+      <span>acceleration</span>
+    </div>
+
+    <p class="principle-line">
+      Only through alignment can we enable acceleration.
+    </p>
+    <p style="margin-top: 1.4rem;">
+      Acceleration is not a metaphor here. It is the rate at which the four
+      goals below get closer. Three of them are endless. One of them is not &mdash;
+      and that one is on a clock. The diagram below is the entire map.
+    </p>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- ───────────── PROBLEM ───────────── -->
+  <section>
+    <h2>The Problem</h2>
+
+    <p>
+      Alignment must scale, and acceleration must compound. The bottleneck on
+      both &mdash; especially for human minds &mdash; is the same one:
+      <em>communication</em>.
+    </p>
+    <p class="principle-line" style="margin-top: 1.6rem;">
+      Bend the rate at which minds can find, transmit and verify each other's
+      signal &mdash; and you bend the timeline on every goal downstream.
+    </p>
+    <!-- <p style="margin-top: 1.6rem;">
+      That is why a communication product can sit underneath a mortality
+      mission without it being a stretch. The lever is upstream of everything.
+    </p> -->
+  </section>
+
+  <hr class="rule" />
+
+  <!-- ───────────── PLAN ───────────── -->
+  <section>
+    <h2>The Plan</h2>
+
+    <p style="max-width: var(--measure); color: var(--ink-soft); margin-bottom: 0.5rem;">
+      One diagram for everything that matters: from the first principle, through the two kinds of minds,
+      and how communication influences alignment and acceleration, all the way to the four operations
+      on information that it's all ultimately about.
+    </p>
+
+    <div class="map-wrap">
+      <svg
+        class="map-svg"
+        viewBox="0 0 720 770"
+        xmlns="http://www.w3.org/2000/svg"
+        role="img"
+        aria-labelledby="map-title map-desc"
+      >
+        <title id="map-title">The throughline: from "everything is information" to the four fundamental operations on it.</title>
+        <desc id="map-desc">
+          A vertical diagram. From the first principle ("everything is information")
+          and "the world is a simulation", flow into two kinds of minds — artificial
+          (low influence) and empowered human (high influence) — which seek alignment.
+          The artificial branch carries the risk of potential misalignment; the human
+          branch produces exponential communication (the primary KPI), which yields
+          deeper relationships, higher productivity and faster innovation. From
+          alignment, the path runs through acceleration and fans out into four
+          functions on information: find(Truth), max(Beauty), abs(Equality),
+          for(Eternity). Each resolves to an ultimate conclusion (Approach infinity,
+          Build abundance, Cultivate connection, Destroy death) and, fundamentally,
+          to one of four actions on information: search for, shape new, share most,
+          save all. The destruction of death is the personal mission — the Final
+          Frontier. Life (friendship, family, love) feeds alignment; Work (sales,
+          funding, advice) feeds acceleration.
+        </desc>
+
+        <defs>
+          <radialGradient id="alignment-glow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%"  stop-color="#d4b86a" stop-opacity="0.16"/>
+            <stop offset="60%" stop-color="#d4b86a" stop-opacity="0.04"/>
+            <stop offset="100%" stop-color="#d4b86a" stop-opacity="0"/>
+          </radialGradient>
+          <marker id="arr-end" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,9 L8,4.5 z" fill="#b6ad9c"/>
+          </marker>
+          <marker id="arr-start" markerWidth="9" markerHeight="9" refX="2" refY="4.5" orient="auto" markerUnits="strokeWidth">
+            <path d="M9,0 L9,9 L1,4.5 z" fill="#b6ad9c"/>
+          </marker>
+          <marker id="arr-end-faint" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,9 L8,4.5 z" fill="#6f6757"/>
+          </marker>
+        </defs>
+
+        <!-- TOP: first principle -->
+        <text x="360" y="32" text-anchor="middle" class="m-title-text">everything is information</text>
+        <line x1="240" y1="50" x2="480" y2="50" class="m-rule"/>
+
+        <!-- ↕ bidirectional between principle and simulation -->
+        <line x1="360" y1="62" x2="360" y2="100" class="m-line"
+              marker-start="url(#arr-start)" marker-end="url(#arr-end)"/>
+
+        <!-- The world is a simulation -->
+        <text x="360" y="120" text-anchor="middle" class="m-keystone-md">The world is a simulation</text>
+
+        <!-- Branches to two minds -->
+        <line x1="335" y1="135" x2="225" y2="195" class="m-line" marker-end="url(#arr-end)"/>
+        <line x1="385" y1="135" x2="495" y2="195" class="m-line" marker-end="url(#arr-end)"/>
+
+        <!-- Two minds -->
+        <text x="200" y="215" text-anchor="middle" class="m-mind-text m-mind-ai">Artificial minds</text>
+        <text x="520" y="215" text-anchor="middle" class="m-mind-text m-mind-human">Human minds</text>
+
+        <!-- Sub-tags -->
+        <!-- <text x="200" y="232" text-anchor="middle" class="m-mind-sub">low influence</text>
+        <text x="520" y="232" text-anchor="middle" class="m-mind-sub">high influence</text> -->
+
+        <!-- Connecting line between minds -->
+        <!-- <line x1="245" y1="246" x2="475" y2="246" class="m-line-mute"/> -->
+
+        <!-- Side branch left: Artificial → Potential misalignment -->
+        <line x1="175" y1="225" x2="80" y2="278" class="m-line-faint" stroke-dasharray="3 3"
+              marker-end="url(#arr-end-faint)"/>
+        <text x="80" y="296" text-anchor="middle" class="m-rose-text">Potential</text>
+        <text x="80" y="312" text-anchor="middle" class="m-rose-text">misalignment</text>
+
+        <!-- Side branch right: Empowered → Exponential communication -->
+        <line x1="545" y1="225" x2="630" y2="278" class="m-line-faint" stroke-dasharray="3 3"
+              marker-end="url(#arr-end-faint)"/>
+        <text x="650" y="296" text-anchor="middle" class="m-leaf-bold">Exponential</text>
+        <text x="650" y="312" text-anchor="middle" class="m-leaf-bold">communication*</text>
+
+        <!-- Outcomes bracket (just left of the deeper/higher/faster text) -->
+        <line x1="580" y1="326" x2="580" y2="374" class="m-line-faint"/>
+        <line x1="580" y1="326" x2="585" y2="326" class="m-line-faint"/>
+        <line x1="580" y1="374" x2="585" y2="374" class="m-line-faint"/>
+
+        <text x="650" y="334" text-anchor="middle" class="m-leaf-text">deeper relationships</text>
+        <text x="650" y="352" text-anchor="middle" class="m-leaf-text">higher productivity</text>
+        <text x="650" y="370" text-anchor="middle" class="m-leaf-text">faster innovation</text>
+
+        <!-- Convergence to alignment apex — originating from the minds, slope matches incoming arrows (60/110) -->
+        <line x1="225" y1="230" x2="360" y2="346" class="m-line"/>
+        <line x1="495" y1="230" x2="360" y2="346" class="m-line"/>
+
+        <!-- Alignment glow (centered on apex) -->
+        <g class="m-glow">
+          <circle cx="360" cy="346" r="105" fill="url(#alignment-glow)"/>
+        </g>
+
+        <!-- Alignment label (above apex) -->
+        <text x="360" y="255" text-anchor="middle" class="m-pursuit-text">alignment</text>
+        <text x="360" y="273" text-anchor="middle" class="m-pursuit-cap">life: friendship, family, love</text>
+
+        <!-- Productivity → alignment & acceleration -->
+        <line x1="570" y1="350" x2="370" y2="280" class="m-line-faint" stroke-dasharray="3 3" marker-end="url(#arr-end-faint)"/>
+        <line x1="570" y1="350" x2="370" y2="420" class="m-line-faint" stroke-dasharray="3 3" marker-end="url(#arr-end-faint)"/>
+
+        <!-- Apex node -->
+        <circle cx="360" cy="346" r="3" fill="#d4b86a"/>
+
+        <!-- Vertical line down to acceleration -->
+        <!-- <line x1="360" y1="430" x2="360" y2="455" class="m-line"/> -->
+
+        <!-- Acceleration (75% — below apex) -->
+        <text x="360" y="435" text-anchor="middle" class="m-pursuit-text">acceleration</text>
+        <text x="360" y="454" text-anchor="middle" class="m-pursuit-cap">work: sales, funding, advice</text>
+
+        <!-- Fan-out from acceleration -->
+        <line x1="360" y1="346" x2="90"  y2="555" class="m-line" marker-end="url(#arr-end)"/>
+        <!-- <line x1="360" y1="346" x2="270" y2="555" class="m-line" marker-end="url(#arr-end)"/> -->
+        <!-- <line x1="360" y1="346" x2="450" y2="555" class="m-line" marker-end="url(#arr-end)"/> -->
+        <line x1="360" y1="346" x2="630" y2="555" class="m-line" marker-end="url(#arr-end)"/>
+
+        <!-- Function row -->
+        <text x="90"  y="575" text-anchor="middle" class="m-fn-text">find(<tspan class="m-arg">Truth</tspan>)</text>
+        <text x="270" y="575" text-anchor="middle" class="m-fn-text">max(<tspan class="m-arg">Beauty</tspan>)</text>
+        <text x="450" y="575" text-anchor="middle" class="m-fn-text">abs(<tspan class="m-arg">Equality</tspan>)</text>
+        <text x="630" y="575" text-anchor="middle" class="m-fn-text">for(<tspan class="m-arg">Eternity</tspan>)</text>
+
+        <!-- Horizontal arrows between functions -->
+        <line x1="145" y1="571" x2="215" y2="571" class="m-line-mute"/>
+        <line x1="325" y1="571" x2="395" y2="571" class="m-line-mute"/>
+        <line x1="505" y1="571" x2="575" y2="571" class="m-line-mute"/>
+
+        <!-- Down arrows to conclusions -->
+        <line x1="90"  y1="588" x2="90"  y2="618" class="m-line" marker-end="url(#arr-end)"/>
+        <line x1="270" y1="588" x2="270" y2="618" class="m-line" marker-end="url(#arr-end)"/>
+        <line x1="450" y1="588" x2="450" y2="618" class="m-line" marker-end="url(#arr-end)"/>
+        <line x1="630" y1="588" x2="630" y2="618" class="m-line" marker-end="url(#arr-end)"/>
+
+        <!-- Conclusion row (two lines, cyan) -->
+        <text x="90"  y="640" text-anchor="middle" class="m-conclusion-text">Approach</text>
+        <text x="90"  y="659" text-anchor="middle" class="m-conclusion-text">infinity</text>
+
+        <text x="270" y="640" text-anchor="middle" class="m-conclusion-text">Build</text>
+        <text x="270" y="659" text-anchor="middle" class="m-conclusion-text">abundance</text>
+
+        <text x="450" y="640" text-anchor="middle" class="m-conclusion-text">Cultivate</text>
+        <text x="450" y="659" text-anchor="middle" class="m-conclusion-text">connection</text>
+
+        <text x="630" y="640" text-anchor="middle" class="m-conclusion-text">Destroy</text>
+        <text x="630" y="659" text-anchor="middle" class="m-conclusion-text">death**</text>
+
+        <!-- Bidirectional arrows from conclusion to action -->
+        <line x1="90"  y1="670" x2="90"  y2="712" class="m-line"
+              marker-start="url(#arr-start)" marker-end="url(#arr-end)"/>
+        <line x1="270" y1="670" x2="270" y2="712" class="m-line"
+              marker-start="url(#arr-start)" marker-end="url(#arr-end)"/>
+        <line x1="450" y1="670" x2="450" y2="712" class="m-line"
+              marker-start="url(#arr-start)" marker-end="url(#arr-end)"/>
+        <line x1="630" y1="670" x2="630" y2="712" class="m-line"
+              marker-start="url(#arr-start)" marker-end="url(#arr-end)"/>
+
+        <!-- Action row (two lines, cyan italic) — the fundamental layer -->
+        <line x1="30"  y1="722" x2="150" y2="722" class="m-rule"/>
+        <text x="90"  y="742" text-anchor="middle" class="m-action-text">search for</text>
+        <text x="90"  y="760" text-anchor="middle" class="m-action-text">information</text>
+
+        <line x1="210" y1="722" x2="330" y2="722" class="m-rule"/>
+        <text x="270" y="742" text-anchor="middle" class="m-action-text">shape new</text>
+        <text x="270" y="760" text-anchor="middle" class="m-action-text">information</text>
+
+        <line x1="390" y1="722" x2="510" y2="722" class="m-rule"/>
+        <text x="450" y="742" text-anchor="middle" class="m-action-text">share most</text>
+        <text x="450" y="760" text-anchor="middle" class="m-action-text">information</text>
+
+        <line x1="570" y1="722" x2="690" y2="722" class="m-rule"/>
+        <text x="630" y="742" text-anchor="middle" class="m-action-text">save all</text>
+        <text x="630" y="760" text-anchor="middle" class="m-action-text">information</text>
+      </svg>
+    </div>
+
+    <!-- KEY (responsive HTML, below SVG) -->
+    <div class="map-key" aria-label="Diagram legend">
+      <div class="key-row">
+        <span class="key-item"><span class="dot dot-gold"></span>First principle</span>
+        <span class="key-item"><span class="dot dot-mauve"></span>Core pursuit</span>
+        <span class="key-item"><span class="dot dot-cyan"></span>Ultimate conclusion</span>
+      </div>
+      <!-- <div class="key-row">
+        <span class="key-item"><span class="dot dot-sky"></span>High influence</span>
+        <span class="key-item"><span class="dot dot-mute"></span>Low influence</span>
+      </div> -->
+      <div class="key-row">
+        <span class="key-item"><span class="dot dot-leaf"></span>Desirable result</span>
+        <span class="key-item"><span class="dot dot-rose"></span>Undesirable result</span>
+      </div>
+      <div class="key-fns">
+        <span class="key-fn"><span class="fn-mark leaf">*</span>Primary thesis</span>
+        <span class="key-fn"><span class="fn-mark cyan">**</span>Personal mission</span>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- ───────────── PRIORITY ───────────── -->
+  <section>
+    <h2>The Priority</h2>
+
+    <p class="principle-line">
+      Truth, Beauty, and Equality are <em>noble, but endless</em> pursuits.<br />
+      Eternity is <em>binary, and time-bound</em>.
+    </p>
+
+    <div class="asym-grid" aria-hidden="true">
+      <div class="asym-col endless">
+        <div class="asym-label">Endless &middot; horizon recedes</div>
+        <div class="asym-item">
+          find(<span class="asym-arg">Truth</span>)
+          <span class="asym-meaning">search for information &rarr; approach infinity</span>
+        </div>
+        <div class="asym-item">
+          max(<span class="asym-arg">Beauty</span>)
+          <span class="asym-meaning">shape new information &rarr; build abundance</span>
+        </div>
+        <div class="asym-item">
+          abs(<span class="asym-arg">Equality</span>)
+          <span class="asym-meaning">share most information &rarr; cultivate connection</span>
+        </div>
+      </div>
+
+      <div class="asym-col binary">
+        <div class="asym-label">Binary &middot; finish line exists</div>
+        <div class="asym-item">
+          for(<span class="asym-arg">Eternity</span>)
+          <span class="asym-meaning">save all information &rarr; destroy death</span>
+        </div>
+      </div>
+    </div>
+
+    <p style="margin-top: 1rem;">
+      The asymmetry matters. You cannot run out of clock chasing Truth, Beauty, or Equality
+      &mdash; the next generation can pick up wherever you left off.
+      Eternity is different. It gets won, or it doesn't. It is literally on a clock.
+    </p>
+
+    <div class="stake">
+      <div class="stake-num">150,000</div>
+      <div class="stake-line">people die every day.</div>
+      <div class="ticker-live">
+        Since you opened this page, <span id="death-counter" class="ticker-num">0</span>
+        have died.
+      </div>
+    </div>
+
+    <div class="frontier">
+      <div class="label">The mission</div>
+      <div class="name">the Final Frontier</div>
+      <p>
+        The day death becomes optional. Pulling that day closer is my personal mission &mdash; and everything I do is to make it happen.
+      </p>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- ───────────── ROADMAP ───────────── -->
+  <section>
+    <h2>The Roadmap</h2>
+
+    <p style="max-width: var(--measure); color: var(--ink-soft); margin-bottom: 0.5rem;">
+      The Final Frontier is not the whole story. It is the binary one — the
+      hinge in the middle. The full arc has five waypoints: foundational
+      proof, the engine that makes equality, the day death becomes optional,
+      a complete simulation of existence, and an asymptote toward truth.
+    </p>
+
+    <div class="milestones">
+
+      <article class="milestone">
+        <div class="milestone-num"><span class="m-prefix">M</span>0</div>
+        <div class="milestone-body">
+          <div class="milestone-title">the Single-Person Unicorn</div>
+          <p class="milestone-desc">
+            The smallest possible unit — one human mind, fully bottleneck-free,
+            running the entire stack. The proof that AI plus exponential
+            communication removes the limits on a single team's output, when
+            that team is a team of one.
+          </p>
+          <div class="milestone-goal">
+            <span class="goal-name">Freedom</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="milestone">
+        <div class="milestone-num"><span class="m-prefix">M</span>1</div>
+        <div class="milestone-body">
+          <div class="milestone-title">the Abundance Engine</div>
+          <p class="milestone-desc">
+            An economic model where profit-per-user grows with the number of
+            users. Reusable answers, presence over performance, value
+            compounding instead of decaying. A system that turns scarcity into
+            shareable surface area, and conversation into capital.
+          </p>
+          <div class="milestone-goal">
+            <span class="goal-name">Equality</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="milestone featured">
+        <div class="milestone-num"><span class="m-prefix">M</span>2</div>
+        <div class="milestone-body">
+          <div class="milestone-title">the Final Frontier</div>
+          <p class="milestone-desc">
+            The day death becomes optional. The personal mission. The hinge of
+            the whole arc — the one goal on a clock. 150,000 people per day,
+            until this milestone lands.
+          </p>
+          <div class="milestone-goal binary">
+            <span class="goal-name">Eternity</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="milestone">
+        <div class="milestone-num"><span class="m-prefix">M</span>3</div>
+        <div class="milestone-body">
+          <div class="milestone-title">the Simulation</div>
+          <div class="milestone-acronym">
+            <em>VERSE &mdash; <strong>V</strong>irtually <strong>E</strong>thereal yet <strong>R</strong>ealistic <strong>S</strong>imulation of <strong>E</strong>xistence</em>
+          </div>
+          <p class="milestone-desc">
+            Existence rendered for any mind that wants to enter it. The
+            networking product carries the same name on purpose: it is the
+            on-ramp. Once death is solved, what we shape next is the world the
+            mind lives in.
+          </p>
+          <div class="milestone-goal">
+            <span class="goal-name">Beauty</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="milestone">
+        <div class="milestone-num"><span class="m-prefix">M</span>4</div>
+        <div class="milestone-body">
+          <div class="milestone-title">the Singularity</div>
+          <p class="milestone-desc">
+            The asymptote. The complete state of all bits in the simulation.
+            I do not believe this one is reachable — but it is the direction
+            that makes the previous four worth doing.
+          </p>
+          <div class="milestone-goal">
+            <span class="goal-name">Truth</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- ───────────── MANTRA ───────────── -->
   <section>
     <h2>The Mantra</h2>
 
