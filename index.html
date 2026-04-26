@@ -4,13 +4,16 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="color-scheme" content="dark" />
-<title>Divyaansh Anuj</title>
-<meta name="description" content="Founder. Builder of tools for minds — to think, connect, and compound across time." />
-<meta property="og:title" content="Divyaansh Anuj" />
-<meta property="og:description" content="Founder. Building tools for minds — to think, connect, and compound across time." />
+<title>DIV &middot; Final Frontier</title>
+<meta name="description" content="Everything is information. The bottleneck is communication. The mission is the Final Frontier — the day death becomes optional." />
+<meta property="og:title" content="DIV &middot; Final Frontier" />
+<meta property="og:description" content="Everything is information. The bottleneck is communication. The mission is the Final Frontier — the day death becomes optional." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://divyaansh.com" />
 <meta name="twitter:card" content="summary" />
+
+<link rel="icon" type="image/svg+xml" href="img/favicon.svg" />
+<link rel="apple-touch-icon" href="img/divyaansh.jpg" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -33,24 +36,25 @@
     --ink-faint: #4a4538;
 
     --gold:      #d4b86a;       /* first principle */
-    --cyan:      #6abec1;       /* conclusions */
-    --mauve:     #c19fb8;       /* pursuits */
-    --coral:     #c97a6f;       /* warning, used sparingly */
-    --leaf:      #9bb38a;       /* desirable */
+    --cyan:      #6abec1;       /* ultimate conclusion */
+    --mauve:     #c19fb8;       /* core pursuit */
+    --leaf:      #9bb38a;       /* desirable result */
+    --sky:       #7aa6cc;       /* high-influence (human minds) */
+    --rose:      #c19a8c;       /* the stake */
 
-    --display:  "Fraunces", "Iowan Old Style", "Apple Garamond", Georgia, serif;
-    --body:     "EB Garamond", "Iowan Old Style", Georgia, serif;
-    --mono:     "JetBrains Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+    --display:   "Fraunces", "Iowan Old Style", "Apple Garamond", Georgia, serif;
+    --body:      "EB Garamond", "Iowan Old Style", Georgia, serif;
+    --mono:      "JetBrains Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
 
-    --measure:  68ch;
-    --gutter:   clamp(1.25rem, 4vw, 2.5rem);
+    --measure:   68ch;
+    --gutter:    clamp(1.25rem, 4vw, 2.5rem);
   }
 
   /* ─────────────────────────────────────────────────────────────
      Reset & base
      ───────────────────────────────────────────────────────────── */
   *, *::before, *::after { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
   body {
     margin: 0;
     font-family: var(--body);
@@ -60,8 +64,8 @@
     background: var(--bg);
     background-image:
       radial-gradient(var(--grid) 1px, transparent 1px),
-      radial-gradient(circle at 20% 10%, rgba(212, 184, 106, 0.04), transparent 40%),
-      radial-gradient(circle at 80% 90%, rgba(106, 190, 193, 0.04), transparent 50%);
+      radial-gradient(circle at 18% 8%,  rgba(212, 184, 106, 0.05), transparent 42%),
+      radial-gradient(circle at 82% 92%, rgba(106, 190, 193, 0.04), transparent 50%);
     background-size: 24px 24px, auto, auto;
     background-position: -1px -1px, 0 0, 0 0;
     -webkit-font-smoothing: antialiased;
@@ -86,15 +90,13 @@
   main {
     max-width: 860px;
     margin: 0 auto;
-    padding: clamp(4rem, 10vw, 7rem) var(--gutter) 6rem;
+    padding: clamp(5rem, 11vw, 8rem) var(--gutter) clamp(4rem, 8vw, 6rem);
   }
-
-  section + section { margin-top: clamp(4rem, 8vw, 6rem); }
 
   .rule {
     border: 0;
     border-top: 1px solid var(--rule);
-    margin: 0;
+    margin: clamp(5rem, 11vw, 7rem) 0;
   }
 
   /* ─────────────────────────────────────────────────────────────
@@ -122,7 +124,7 @@
     text-transform: uppercase;
     letter-spacing: 0.22em;
     color: var(--ink-mute);
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
   }
   h3 {
     font-size: 1.6rem;
@@ -136,32 +138,40 @@
   em { font-style: italic; color: var(--ink-soft); }
   strong { font-weight: 500; color: var(--ink); }
 
-  .meta {
-    font-family: var(--mono);
-    font-size: 0.78rem;
-    color: var(--ink-mute);
-    letter-spacing: 0.04em;
-  }
+  /* shared coloured words */
+  .c-gold  { color: var(--gold); }
+  .c-cyan  { color: var(--cyan); }
+  .c-mauve { color: var(--mauve); font-style: italic; }
+  .c-leaf  { color: var(--leaf); }
+  .c-sky   { color: var(--sky); }
+  .c-rose  { color: var(--rose); }
 
   /* ─────────────────────────────────────────────────────────────
      Hero
      ───────────────────────────────────────────────────────────── */
-  .hero {
-    padding-top: 1rem;
-  }
-  .hero h1 {
-    margin-bottom: 1.6rem;
-  }
   .hero h1 .amp {
     font-style: italic;
     color: var(--gold);
     font-variation-settings: "opsz" 144, "SOFT" 100;
   }
+  .portrait {
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 30%;
+    display: block;
+    margin: 0 0 1.6rem;
+    border: 1px solid rgba(212, 184, 106, 0.25);
+    box-shadow: 0 0 0 4px rgba(11, 15, 21, 0.6),
+                0 0 24px rgba(212, 184, 106, 0.08);
+    background: var(--bg-soft);
+  }
   .lede {
     font-size: 1.18rem;
     color: var(--ink-soft);
     max-width: 36em;
-    margin-bottom: 2.2rem;
+    margin: 1.6rem 0 2.2rem;
   }
   .status {
     display: inline-flex;
@@ -184,114 +194,486 @@
   }
 
   /* ─────────────────────────────────────────────────────────────
-     The Why — framework
+     Manifesto blocks (principle, two minds, alignment, etc.)
      ───────────────────────────────────────────────────────────── */
-  .why { }
-  .why .stanza {
-    margin-bottom: 2.4rem;
-    max-width: var(--measure);
-  }
-  .why .stanza:last-child { margin-bottom: 0; }
-
-  .principle {
+  .principle-line {
     font-family: var(--display);
     font-size: 1.55rem;
-    line-height: 1.35;
+    line-height: 1.4;
     color: var(--ink);
     font-style: italic;
     font-variation-settings: "opsz" 144, "SOFT" 60;
+    max-width: var(--measure);
   }
-  .principle .accent { color: var(--gold); font-style: normal; }
+  .principle-line .accent { color: var(--gold); font-style: normal; }
 
-  .pursuits {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
-    margin: 2.5rem 0 1.5rem;
-    padding: 2rem 0;
-    border-top: 1px solid var(--rule);
-    border-bottom: 1px solid var(--rule);
-  }
-  .pursuit {
-    display: flex;
-    flex-direction: column;
-    gap: 0.55rem;
-  }
-  .pursuit .fn {
-    font-family: var(--mono);
-    font-size: 0.92rem;
-    color: var(--mauve);
-    letter-spacing: -0.01em;
-  }
-  .pursuit .fn .arg { color: var(--ink); font-style: italic; }
-  .pursuit .arrow {
-    font-family: var(--mono);
-    color: var(--ink-faint);
-    font-size: 0.85rem;
-    line-height: 1;
-  }
-  .pursuit .conclusion {
-    font-family: var(--display);
-    font-size: 1.15rem;
-    color: var(--cyan);
-    line-height: 1.25;
-    font-variation-settings: "opsz" 144, "SOFT" 50;
-  }
-  .pursuit .gloss {
-    font-family: var(--mono);
-    font-size: 0.74rem;
-    color: var(--ink-mute);
-    letter-spacing: 0.02em;
-    line-height: 1.4;
-    margin-top: 0.15rem;
-  }
+  .stanza { margin-bottom: 1.8rem; max-width: var(--measure); }
+  .stanza:last-child { margin-bottom: 0; }
 
-  .kpi {
+  .axiom {
     font-family: var(--display);
+    font-size: clamp(2.2rem, 5.5vw, 3.4rem);
+    line-height: 1.1;
+    color: var(--ink);
     font-style: italic;
-    color: var(--ink-soft);
-    font-size: 1.1rem;
-    line-height: 1.5;
+    font-variation-settings: "opsz" 144, "SOFT" 100;
+    letter-spacing: -0.015em;
+    margin: 0 0 1.5rem;
   }
-  .kpi .key { font-style: normal; color: var(--ink-mute); font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; margin-right: 0.5rem; }
+  .axiom .accent { color: var(--gold); font-style: normal; }
 
-  @media (max-width: 720px) {
-    .pursuits {
-      grid-template-columns: 1fr;
-      gap: 1.6rem;
-      padding: 1.8rem 0;
-    }
-    .pursuit { flex-direction: row; align-items: baseline; gap: 0.9rem; flex-wrap: wrap; }
-    .pursuit .fn { min-width: 7em; }
-    .pursuit .arrow { display: none; }
-    .pursuit .conclusion { font-size: 1.05rem; }
+  .axiom-sub {
+    font-family: var(--display);
+    font-size: 1.4rem;
+    line-height: 1.4;
+    color: var(--ink-soft);
+    font-style: italic;
+    max-width: var(--measure);
   }
 
   /* ─────────────────────────────────────────────────────────────
-     The Work — eras
+     Two minds visual
      ───────────────────────────────────────────────────────────── */
-  .eras {
-    display: flex;
-    flex-direction: column;
-    gap: 2.4rem;
+  .minds-visual {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 3rem 0 1rem;
+    max-width: 640px;
   }
+  .mind-card {
+    border: 1px solid var(--rule);
+    background: rgba(255, 255, 255, 0.012);
+    padding: 1.4rem 1.2rem;
+    text-align: center;
+    border-radius: 2px;
+  }
+  .mind-card .mind-label {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--ink-mute);
+    margin-bottom: 0.8rem;
+  }
+  .mind-card .mind-name {
+    font-family: var(--display);
+    font-size: 1.3rem;
+    line-height: 1.2;
+  }
+  .mind-card.human .mind-name { color: var(--sky); }
+  .mind-card.ai     .mind-name { color: var(--ink-soft); }
+  .mind-card .mind-tag {
+    margin-top: 0.6rem;
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    color: var(--ink-faint);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .mind-bridge {
+    font-family: var(--display);
+    font-style: italic;
+    color: var(--mauve);
+    font-size: 1.1rem;
+    text-align: center;
+    line-height: 1.1;
+  }
+  .mind-bridge::before { content: "←"; color: var(--ink-faint); margin-right: 0.5rem; }
+  .mind-bridge::after  { content: "→"; color: var(--ink-faint); margin-left: 0.5rem; }
+
+  @media (max-width: 600px) {
+    .minds-visual { grid-template-columns: 1fr; }
+    .mind-bridge::before, .mind-bridge::after { content: ""; }
+    .mind-bridge { padding: 0.5rem 0; }
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     Pursuit chevron
+     ───────────────────────────────────────────────────────────── */
+  .pursuit-flow {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin: 2rem 0 1.5rem;
+    font-family: var(--display);
+    font-style: italic;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    color: var(--mauve);
+    flex-wrap: wrap;
+  }
+  .pursuit-flow .arrow {
+    color: var(--ink-faint);
+    font-style: normal;
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     The Map — wide whiteboard recreation
+     ───────────────────────────────────────────────────────────── */
+  .map-wrap {
+    margin: 2rem auto 0;
+    width: 100%;
+    max-width: 1180px;
+    /* break out of the 860px main column */
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0 var(--gutter);
+    box-sizing: border-box;
+  }
+  .map-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    overflow: visible;
+  }
+
+  /* Key box (left) */
+  .m-key-header {
+    font-family: var(--mono);
+    font-weight: 500;
+    font-size: 13px;
+    fill: var(--ink);
+  }
+  .m-key-item {
+    font-family: var(--display);
+    font-size: 14px;
+  }
+  .m-key-bold {
+    font-family: var(--display);
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .m-key-box {
+    fill: none;
+    stroke: var(--ink-faint);
+    stroke-dasharray: 4 4;
+  }
+  .m-key-footnote {
+    font-family: var(--display);
+    font-size: 12px;
+    fill: var(--ink-soft);
+    font-style: italic;
+  }
+  .m-key-footnote-bold {
+    font-family: var(--display);
+    font-size: 12px;
+    font-weight: 500;
+    fill: var(--cyan);
+  }
+
+  /* Top: first principle */
+  .m-title-text {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 18px;
+    fill: var(--gold);
+  }
+  .m-keystone-md {
+    font-family: var(--display);
+    font-size: 20px;
+    font-weight: 600;
+    fill: var(--gold);
+  }
+
+  /* Two minds */
+  .m-mind-text {
+    font-family: var(--display);
+    font-size: 16px;
+  }
+  .m-mind-human { fill: var(--sky); }
+  .m-mind-ai    { fill: var(--ink-soft); }
+
+  /* Pursuits (alignment, acceleration) */
+  .m-pursuit-text {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 16px;
+    fill: var(--mauve);
+  }
+  .m-pursuit-bold {
+    font-family: var(--display);
+    font-size: 14px;
+    font-weight: 600;
+    fill: var(--mauve);
+  }
+
+  /* Side outcomes (leaf) */
+  .m-leaf-text {
+    font-family: var(--display);
+    font-size: 13px;
+    fill: var(--leaf);
+  }
+  .m-rose-text {
+    font-family: var(--display);
+    font-size: 13px;
+    fill: var(--rose);
+    font-style: italic;
+  }
+
+  /* Function row */
+  .m-fn-text {
+    font-family: var(--display);
+    font-size: 15px;
+    fill: var(--leaf);
+  }
+  .m-fn-text .m-arg {
+    font-family: var(--display);
+    font-style: italic;
+    fill: var(--leaf);
+  }
+
+  /* Conclusions */
+  .m-conclusion-text {
+    font-family: var(--display);
+    font-size: 14px;
+    font-weight: 600;
+    fill: var(--cyan);
+  }
+
+  /* Actions (italic, cyan) */
+  .m-action-text {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 13px;
+    fill: var(--cyan);
+    font-weight: 600;
+  }
+
+  /* Lines, arrows */
+  .m-line   { stroke: var(--ink-soft); stroke-width: 1; fill: none; }
+  .m-line-mute { stroke: var(--ink-mute); stroke-width: 1; fill: none; }
+  .m-arrow-head { fill: var(--ink-soft); }
+
+  /* Mobile: scroll diagram horizontally rather than crush it */
+  @media (max-width: 720px) {
+    .map-wrap {
+      max-width: 100vw;
+      padding: 0;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .map-svg {
+      min-width: 760px;
+    }
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     Asymmetry — endless vs binary (3 vs 1)
+     ───────────────────────────────────────────────────────────── */
+  .asym-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 2rem 3rem;
+    margin: 2.5rem 0 2rem;
+    max-width: 720px;
+  }
+  .asym-col {
+    border-top: 1px solid var(--rule);
+    padding-top: 1rem;
+  }
+  .asym-col .asym-label {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    margin-bottom: 1.2rem;
+  }
+  .asym-col.binary {
+    border-top-color: var(--rose);
+  }
+  .asym-col.binary  .asym-label { color: var(--rose); }
+
+  .asym-item {
+    font-family: var(--display);
+    font-size: 1rem;
+    color: var(--leaf);
+    margin-bottom: 1rem;
+    line-height: 1.4;
+  }
+  .asym-item .asym-arg {
+    font-family: var(--display);
+    font-style: italic;
+    color: var(--leaf);
+  }
+  .asym-item .asym-meaning {
+    display: block;
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 0.92rem;
+    color: var(--cyan);
+    margin-top: 0.15rem;
+  }
+  .asym-col.binary .asym-item        { color: var(--rose); }
+  .asym-col.binary .asym-item .asym-arg { color: var(--rose); }
+
+  @media (max-width: 600px) {
+    .asym-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     Death stake & ticker
+     ───────────────────────────────────────────────────────────── */
+  .stake {
+    margin-top: 3rem;
+    padding: 2rem 0 1.8rem;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    max-width: var(--measure);
+  }
+  .stake-num {
+    font-family: var(--display);
+    font-size: clamp(2.4rem, 6vw, 3.6rem);
+    line-height: 1;
+    color: var(--rose);
+    font-variation-settings: "opsz" 144, "SOFT" 0;
+    letter-spacing: -0.01em;
+  }
+  .stake-line {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--ink-soft);
+    margin-top: 0.6rem;
+  }
+  .ticker-live {
+    font-family: var(--mono);
+    font-size: 0.84rem;
+    color: var(--ink-mute);
+    margin-top: 1.4rem;
+    letter-spacing: 0.02em;
+  }
+  .ticker-num {
+    color: var(--rose);
+    font-variation-numeric: tabular-nums;
+  }
+
+  .frontier {
+    margin-top: 2.5rem;
+    max-width: var(--measure);
+  }
+  .frontier .label {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--ink-mute);
+    margin-bottom: 0.6rem;
+  }
+  .frontier .name {
+    font-family: var(--display);
+    font-size: 2.2rem;
+    line-height: 1.1;
+    color: var(--cyan);
+    font-style: italic;
+    margin-bottom: 0.8rem;
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     VERSE life/work split
+     ───────────────────────────────────────────────────────────── */
+  .verse-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 2.5rem 0 2rem;
+    max-width: 680px;
+  }
+  .verse-card {
+    border: 1px solid var(--rule);
+    background: rgba(255, 255, 255, 0.012);
+    padding: 1.5rem 1.4rem;
+    border-radius: 2px;
+  }
+  .verse-card .vc-label {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--ink-mute);
+    margin-bottom: 0.8rem;
+  }
+  .verse-card .vc-words {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--ink);
+    margin-bottom: 1.2rem;
+  }
+  .verse-card .vc-effect {
+    font-family: var(--display);
+    font-style: italic;
+    color: var(--mauve);
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+  .verse-card .vc-effect::before { content: "→ "; color: var(--ink-faint); font-style: normal; }
+
+  .verse-outcomes {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--leaf);
+    margin: 2rem 0 0;
+    max-width: var(--measure);
+  }
+  .verse-outcomes .sep { color: var(--ink-faint); font-style: normal; margin: 0 0.6rem; }
+
+  @media (max-width: 600px) {
+    .verse-split { grid-template-columns: 1fr; }
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     The Work — DIV monogram + drop caps
+     ───────────────────────────────────────────────────────────── */
+  .work-aside {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 1.08rem;
+    color: var(--ink-soft);
+    max-width: 38em;
+    margin: -0.5rem 0 4rem;
+    line-height: 1.5;
+    font-variation-settings: "opsz" 144, "SOFT" 60;
+  }
+  .work-aside .di-v {
+    color: var(--gold);
+    font-style: normal;
+    letter-spacing: 0.05em;
+  }
+
+  .eras { display: flex; flex-direction: column; gap: 4rem; }
+
   .era {
     display: grid;
-    grid-template-columns: 7.5rem 1fr;
-    gap: 2rem;
-    align-items: baseline;
-    padding-top: 1.6rem;
-    border-top: 1px solid var(--rule);
+    grid-template-columns: 7rem 1fr;
+    column-gap: 2rem;
+    align-items: start;
   }
-  .era:first-child { padding-top: 0; border-top: 0; }
-  .era .year {
+  .era-cap {
+    font-family: var(--display);
+    font-size: clamp(5rem, 11vw, 7.5rem);
+    line-height: 0.85;
+    font-style: italic;
+    font-weight: 350;
+    color: var(--gold);
+    user-select: none;
+    font-variation-settings: "opsz" 144, "SOFT" 100;
+    letter-spacing: -0.02em;
+    margin-top: -0.18em;
+    text-align: center;
+  }
+  .era-body { padding-top: 0.4rem; }
+  .era-year {
     font-family: var(--mono);
-    font-size: 0.78rem;
+    font-size: 0.74rem;
     color: var(--ink-mute);
-    letter-spacing: 0.06em;
-    padding-top: 0.55rem;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.6rem;
   }
-  .era .body { }
   .era h3 {
     display: flex;
     align-items: baseline;
@@ -300,59 +682,70 @@
   }
   .era h3 .role {
     font-family: var(--mono);
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     color: var(--ink-mute);
     text-transform: uppercase;
     letter-spacing: 0.18em;
     font-weight: 400;
-    padding-top: 0.2em;
   }
-  .era p { color: var(--ink-soft); }
+  .era p { color: var(--ink-soft); margin-top: 0.7rem; }
   .era .outcome {
     display: inline-block;
-    margin-top: 0.6rem;
+    margin-top: 1rem;
     font-family: var(--mono);
     font-size: 0.74rem;
     color: var(--ink-mute);
     letter-spacing: 0.04em;
   }
-  .era .outcome::before {
-    content: "→ ";
-    color: var(--ink-faint);
-  }
+  .era .outcome::before { content: "→ "; color: var(--ink-faint); }
+  .era a.outcome { border-bottom: none; }
+  .era a.outcome:hover { color: var(--gold); }
 
-  @media (max-width: 720px) {
-    .era { grid-template-columns: 1fr; gap: 0.5rem; }
-    .era .year { padding-top: 0; }
+  @media (max-width: 640px) {
+    .era { grid-template-columns: 1fr; row-gap: 0.4rem; }
+    .era-cap { text-align: left; font-size: 5.5rem; margin-bottom: -0.3rem; }
   }
 
   /* ─────────────────────────────────────────────────────────────
-     Operating Principles
+     CAAM mantra
      ───────────────────────────────────────────────────────────── */
-  .principles {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2.2rem 3rem;
+  .caam-block {
+    text-align: center;
+    margin: 1rem auto 0;
+    max-width: 520px;
   }
-  .principle-item .label {
+  .caam-letters {
+    font-family: var(--display);
+    font-size: clamp(3.4rem, 9vw, 5rem);
+    line-height: 1;
+    color: var(--gold);
+    letter-spacing: 0.18em;
+    font-variation-settings: "opsz" 144, "SOFT" 100;
+    margin-bottom: 1.2rem;
+  }
+  .caam-letters .dot { color: var(--ink-faint); }
+  .caam-expand {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 1.4rem;
+    color: var(--ink);
+    line-height: 1.4;
+    margin-bottom: 1.4rem;
+  }
+  .caam-expand strong { color: var(--gold); font-weight: 500; font-style: normal; }
+  .caam-gloss {
     font-family: var(--mono);
-    font-size: 0.74rem;
-    color: var(--mauve);
-    text-transform: uppercase;
-    letter-spacing: 0.16em;
-    margin-bottom: 0.5rem;
-  }
-  .principle-item p { color: var(--ink-soft); margin: 0; }
-
-  @media (max-width: 640px) {
-    .principles { grid-template-columns: 1fr; gap: 1.8rem; }
+    font-size: 0.78rem;
+    color: var(--ink-mute);
+    letter-spacing: 0.04em;
+    margin-top: 1.2rem;
   }
 
   /* ─────────────────────────────────────────────────────────────
      Footer
      ───────────────────────────────────────────────────────────── */
   footer {
-    margin-top: clamp(5rem, 10vw, 7rem);
+    margin-top: clamp(6rem, 13vw, 9rem);
     padding-top: 2rem;
     border-top: 1px solid var(--rule);
     display: flex;
@@ -361,11 +754,7 @@
     flex-wrap: wrap;
     gap: 1rem;
   }
-  .links {
-    display: flex;
-    gap: 1.6rem;
-    flex-wrap: wrap;
-  }
+  .links { display: flex; gap: 1.6rem; flex-wrap: wrap; }
   .links a {
     font-family: var(--mono);
     font-size: 0.82rem;
@@ -383,17 +772,21 @@
   /* ─────────────────────────────────────────────────────────────
      Reveal on load
      ───────────────────────────────────────────────────────────── */
-  .reveal { opacity: 0; transform: translateY(8px); animation: reveal 900ms cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-  .reveal:nth-child(1) { animation-delay: 0.1s; }
+  .reveal {
+    opacity: 0;
+    transform: translateY(8px);
+    animation: reveal 900ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .reveal:nth-child(1) { animation-delay: 0.10s; }
   .reveal:nth-child(2) { animation-delay: 0.25s; }
-  .reveal:nth-child(3) { animation-delay: 0.4s; }
-  .reveal:nth-child(4) { animation-delay: 0.55s; }
-  @keyframes reveal {
-    to { opacity: 1; transform: translateY(0); }
-  }
+  .reveal:nth-child(3) { animation-delay: 0.40s; }
+  @keyframes reveal { to { opacity: 1; transform: translateY(0); } }
+
   @media (prefers-reduced-motion: reduce) {
-    .reveal, .pulse { animation: none; opacity: 1; transform: none; }
+    .pulse, .m-glow circle, .reveal { animation: none; }
+    html { scroll-behavior: auto; }
   }
+
 </style>
 </head>
 <body>
@@ -402,141 +795,471 @@
 
   <!-- ───────────── HERO ───────────── -->
   <section class="hero">
+    <img class="portrait reveal" src="img/divyaansh.jpg"
+         alt="Divyaansh Anuj"
+         onerror="this.style.display='none'" />
     <h1 class="reveal">
-      Divyaansh<br />
-      <span class="amp">&amp;</span> his quiet<br />
-      experiments.
+      DIV<br />
+      <span class="amp">&amp;</span><br />
+      the Final Frontier
     </h1>
     <p class="lede reveal">
-      Founder. Builder of tools for minds — to think, connect, and compound across time.
-      I work at the intersection of <em>information</em> and <em>relationships</em>,
-      and I have been doing it for a decade.
+      Founder. Working on the bottleneck between minds — because everything else
+      I want to happen, including the day death becomes optional, depends on it.
     </p>
     <div class="status reveal">
       <span class="pulse" aria-hidden="true"></span>
-      Currently building VERSE — a private async network for founders.
+      Currently building VERSE &middot; exponential communication for minds.
     </div>
   </section>
 
-  <hr class="rule" style="margin-top: clamp(4rem, 9vw, 6rem);" />
+  <hr class="rule" />
 
-  <!-- ───────────── THE WHY ───────────── -->
-  <section class="why">
-    <h2>The Why</h2>
+  <!-- ───────────── FIRST PRINCIPLE ───────────── -->
+  <section>
+    <h2>The First Principle</h2>
+    <p class="axiom">
+      <span class="accent">Everything</span> is information.
+    </p>
+    <p class="axiom-sub">
+      The world is a simulation worth taking seriously. Matter, energy,
+      thought, conversation — every one of them is a pattern of bits. Once
+      that frame snaps into place, every other question downstream becomes
+      a question about <em>which bits</em>, and <em>which minds get to touch them</em>.
+    </p>
+  </section>
 
-    <div class="stanza">
-      <p class="principle">
-        Everything is <span class="accent">information</span>.<br />
-        The world is a simulation worth taking seriously,<br />
-        and minds are the only things that move it forward.
-      </p>
+  <hr class="rule" />
+
+  <!-- ───────────── TWO MINDS ───────────── -->
+  <section>
+    <h2>Two Kinds of Minds</h2>
+    <p>
+      In a universe made of information, only two things can hold and move it:
+      the <span class="c-sky">human</span> minds we have always had, and the
+      <span class="c-mute">artificial</span> ones we are now building. These are
+      the only two players on the board, for the rest of this century at least.
+    </p>
+
+    <div class="minds-visual" aria-hidden="true">
+      <div class="mind-card human">
+        <div class="mind-label">High influence</div>
+        <div class="mind-name">empowered<br />human minds</div>
+        <div class="mind-tag">substrate · meaning</div>
+      </div>
+      <div class="mind-bridge">alignment</div>
+      <div class="mind-card ai">
+        <div class="mind-label">Augmenting</div>
+        <div class="mind-name">artificial<br />minds</div>
+        <div class="mind-tag">leverage · speed</div>
+      </div>
     </div>
 
-    <div class="stanza">
+    <p>
+      What we seek &mdash; <em>within</em> each group, and <em>across</em> them &mdash;
+      is one thing: <span class="c-mauve">alignment</span>. Without it, more
+      capability is not a gift; it is a hazard.
+    </p>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- ───────────── ALIGNMENT → ACCELERATION ───────────── -->
+  <section>
+    <h2>Alignment &rarr; Acceleration</h2>
+
+    <div class="pursuit-flow" aria-hidden="true">
+      <span>alignment</span>
+      <span class="arrow">&rarr;</span>
+      <span>acceleration</span>
+    </div>
+
+    <p class="principle-line">
+      Only through alignment can we enable acceleration.
+    </p>
+    <p style="margin-top: 1.4rem;">
+      Acceleration is not a metaphor here. It is the rate at which the four
+      goals below get closer. Three of them are endless. One of them is not &mdash;
+      and that one is on a clock. The diagram below is the entire map.
+    </p>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- ───────────── THE MAP ───────────── -->
+  <section>
+    <h2>The Map</h2>
+
+    <p style="max-width: var(--measure); color: var(--ink-soft); margin-bottom: 0.5rem;">
+      One diagram for everything I work on. Read top to bottom: from the first
+      principle, down through the two kinds of minds, through the bottleneck
+      that gates them, and out into the four operations on information that
+      every meaningful goal turns out to be.
+    </p>
+
+    <div class="map-wrap">
+      <svg
+        class="map-svg"
+        viewBox="0 0 1200 660"
+        xmlns="http://www.w3.org/2000/svg"
+        role="img"
+        aria-labelledby="map-title map-desc"
+      >
+        <title id="map-title">The throughline: from "everything is information" down to the four fundamental operations on information.</title>
+        <desc id="map-desc">
+          A wide diagram with a key on the left and the main chart on the right.
+          The chart starts with "everything is information" and "the world is a simulation",
+          then branches into two kinds of minds — artificial (low influence) and empowered
+          human (high influence) — which seek alignment with each other. Misalignment is the
+          undesirable result on one side; exponential communication, the primary KPI, is the
+          desirable result on the other. Through alignment we get acceleration, which fans
+          into four functions on information: find(Truth), max(Beauty), abs(Equality), for(Eternity).
+          Each leads to an ultimate conclusion — Approach infinity, Build abundance, Cultivate
+          connection, Destroy death — and resolves, fundamentally, to one of four actions on
+          information: search for, shape new, share most, save all. A side panel ties Life
+          (friendship, family, love) back to alignment, and Work (sales, funding, advice) back
+          to acceleration, with three outcomes in between: deeper relationships, higher
+          productivity, faster innovation. The destruction of death is the personal mission —
+          the Final Frontier.
+        </desc>
+
+        <defs>
+          <marker id="arr-end" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,9 L8,4.5 z" fill="#b6ad9c"/>
+          </marker>
+          <marker id="arr-start" markerWidth="9" markerHeight="9" refX="2" refY="4.5" orient="auto" markerUnits="strokeWidth">
+            <path d="M9,0 L9,9 L1,4.5 z" fill="#b6ad9c"/>
+          </marker>
+        </defs>
+
+        <!-- ============== KEY (left) ============== -->
+        <text x="30" y="46" class="m-key-header">Key:</text>
+        <rect class="m-key-box" x="20" y="70" width="220" height="365" rx="2"/>
+
+        <text x="40" y="110" class="m-key-bold" fill="#d4b86a">First principle</text>
+
+        <text x="40" y="148" class="m-key-item" fill="#7aa6cc">High influence</text>
+        <text x="40" y="178" class="m-key-item" fill="#b6ad9c">Low influence</text>
+
+        <text x="40" y="222" class="m-key-bold" fill="#c19fb8">Core pursuit</text>
+
+        <text x="40" y="262" class="m-key-item" fill="#9bb38a">Desirable result</text>
+        <text x="40" y="292" class="m-key-item" fill="#c19a8c">Undesirable result</text>
+
+        <text x="40" y="335" class="m-key-bold" fill="#6abec1">Ultimate conclusion</text>
+
+        <!-- Footnotes (below key) -->
+        <text x="30" y="475" class="m-key-footnote" fill="#9bb38a">*Primary KPI</text>
+
+        <text x="30" y="510" class="m-key-footnote-bold">**Personal mission</text>
+        <text x="30" y="528" class="m-key-footnote-bold">a.k.a. Final Frontier</text>
+
+        <!-- ============== MAIN CHART ============== -->
+
+        <!-- Top: everything is information -->
+        <text x="580" y="35" text-anchor="middle" class="m-title-text">everything is information</text>
+
+        <!-- bidirectional arrow ↕ between principle and simulation -->
+        <line x1="580" y1="50" x2="580" y2="92" class="m-line"
+              marker-start="url(#arr-start)" marker-end="url(#arr-end)"/>
+
+        <!-- The world is a simulation -->
+        <text x="580" y="110" text-anchor="middle" class="m-keystone-md">The world is a simulation</text>
+
+        <!-- Branches down to two minds -->
+        <line x1="555" y1="125" x2="465" y2="195" class="m-line" marker-end="url(#arr-end)"/>
+        <line x1="605" y1="125" x2="710" y2="195" class="m-line" marker-end="url(#arr-end)"/>
+
+        <!-- Two minds -->
+        <text x="450" y="215" text-anchor="middle" class="m-mind-text m-mind-ai">Artificial minds</text>
+        <text x="720" y="215" text-anchor="middle" class="m-mind-text m-mind-human">Empowered human minds</text>
+
+        <!-- Horizontal connecting line between the two minds -->
+        <line x1="510" y1="222" x2="640" y2="222" class="m-line-mute"/>
+
+        <!-- Alignment triangle: two slanted lines converging at apex -->
+        <line x1="465" y1="232" x2="580" y2="365" class="m-line"/>
+        <line x1="700" y1="232" x2="580" y2="365" class="m-line"/>
+
+        <!-- alignment label inside triangle -->
+        <text x="580" y="290" text-anchor="middle" class="m-pursuit-text">alignment</text>
+
+        <!-- Branch: Artificial minds → Potential misalignment (down-left) -->
+        <line x1="420" y1="232" x2="345" y2="335" class="m-line" marker-end="url(#arr-end)"/>
+        <text x="345" y="355" text-anchor="middle" class="m-rose-text">Potential misalignment</text>
+
+        <!-- Branch: Empowered human minds → Exponential communication (down-right) -->
+        <line x1="745" y1="232" x2="820" y2="335" class="m-line" marker-end="url(#arr-end)"/>
+        <text x="830" y="355" text-anchor="middle" class="m-leaf-text">Exponential communication*</text>
+
+        <!-- acceleration label below the triangle apex -->
+        <text x="580" y="385" text-anchor="middle" class="m-pursuit-text">acceleration</text>
+
+        <!-- 4 fan-out arrows from acceleration to functions -->
+        <line x1="565" y1="398" x2="320" y2="430" class="m-line" marker-end="url(#arr-end)"/>
+        <line x1="575" y1="398" x2="480" y2="430" class="m-line" marker-end="url(#arr-end)"/>
+        <line x1="590" y1="398" x2="660" y2="430" class="m-line" marker-end="url(#arr-end)"/>
+        <line x1="600" y1="398" x2="820" y2="430" class="m-line" marker-end="url(#arr-end)"/>
+
+        <!-- Function row -->
+        <text x="320" y="450" text-anchor="middle" class="m-fn-text">find(<tspan class="m-arg" font-style="italic">Truth</tspan>)</text>
+        <text x="480" y="450" text-anchor="middle" class="m-fn-text">max(<tspan class="m-arg" font-style="italic">Beauty</tspan>)</text>
+        <text x="660" y="450" text-anchor="middle" class="m-fn-text">abs(<tspan class="m-arg" font-style="italic">Equality</tspan>)</text>
+        <text x="820" y="450" text-anchor="middle" class="m-fn-text">for(<tspan class="m-arg" font-style="italic">Eternity</tspan>)</text>
+
+        <!-- Horizontal arrows between functions -->
+        <line x1="365" y1="446" x2="430" y2="446" class="m-line" marker-end="url(#arr-end)"/>
+        <line x1="525" y1="446" x2="610" y2="446" class="m-line" marker-end="url(#arr-end)"/>
+        <line x1="710" y1="446" x2="770" y2="446" class="m-line" marker-end="url(#arr-end)"/>
+
+        <!-- Down arrows from functions to conclusions -->
+        <line x1="320" y1="465" x2="320" y2="495" class="m-line" marker-end="url(#arr-end)"/>
+        <line x1="480" y1="465" x2="480" y2="495" class="m-line" marker-end="url(#arr-end)"/>
+        <line x1="660" y1="465" x2="660" y2="495" class="m-line" marker-end="url(#arr-end)"/>
+        <line x1="820" y1="465" x2="820" y2="495" class="m-line" marker-end="url(#arr-end)"/>
+
+        <!-- Conclusion row (cyan, bold) -->
+        <text x="320" y="515" text-anchor="middle" class="m-conclusion-text">Approach infinity</text>
+        <text x="480" y="515" text-anchor="middle" class="m-conclusion-text">Build abundance</text>
+        <text x="660" y="515" text-anchor="middle" class="m-conclusion-text">Cultivate connection</text>
+        <text x="820" y="515" text-anchor="middle" class="m-conclusion-text">Destroy death**</text>
+
+        <!-- Bidirectional arrows from conclusion to action -->
+        <line x1="320" y1="528" x2="320" y2="572" class="m-line"
+              marker-start="url(#arr-start)" marker-end="url(#arr-end)"/>
+        <line x1="480" y1="528" x2="480" y2="572" class="m-line"
+              marker-start="url(#arr-start)" marker-end="url(#arr-end)"/>
+        <line x1="660" y1="528" x2="660" y2="572" class="m-line"
+              marker-start="url(#arr-start)" marker-end="url(#arr-end)"/>
+        <line x1="820" y1="528" x2="820" y2="572" class="m-line"
+              marker-start="url(#arr-start)" marker-end="url(#arr-end)"/>
+
+        <!-- Action row (cyan italic) — the fundamental layer -->
+        <text x="320" y="592" text-anchor="middle" class="m-action-text">search for information</text>
+        <text x="480" y="592" text-anchor="middle" class="m-action-text">shape new information</text>
+        <text x="660" y="592" text-anchor="middle" class="m-action-text">share most information</text>
+        <text x="820" y="592" text-anchor="middle" class="m-action-text">save all information</text>
+
+        <!-- ============== RIGHT PANEL ============== -->
+
+        <!-- Life label -->
+        <text x="1050" y="278" text-anchor="middle" class="m-pursuit-bold">Life: Friendship, Family, Love</text>
+
+        <!-- Bidirectional arrow: alignment ↔ Life -->
+        <line x1="640" y1="278" x2="935" y2="278" class="m-line"
+              marker-start="url(#arr-start)" marker-end="url(#arr-end)"/>
+
+        <!-- Bracket on the left of the 3 outcomes -->
+        <line x1="932" y1="320" x2="932" y2="370" class="m-line-mute"/>
+        <line x1="932" y1="320" x2="938" y2="320" class="m-line-mute"/>
+        <line x1="932" y1="370" x2="938" y2="370" class="m-line-mute"/>
+
+        <!-- Three outcomes (leaf) -->
+        <text x="1050" y="328" text-anchor="middle" class="m-leaf-text">Deeper Relationships</text>
+        <text x="1050" y="346" text-anchor="middle" class="m-leaf-text">Higher Productivity</text>
+        <text x="1050" y="364" text-anchor="middle" class="m-leaf-text">Faster Innovation</text>
+
+        <!-- Arrow: Exponential communication → outcomes bracket -->
+        <line x1="900" y1="346" x2="928" y2="346" class="m-line" marker-end="url(#arr-end)"/>
+
+        <!-- Work label -->
+        <text x="1050" y="396" text-anchor="middle" class="m-pursuit-bold">Work: Sales, Funding, Advice</text>
+
+        <!-- Bidirectional arrow: acceleration ↔ Work -->
+        <line x1="640" y1="395" x2="935" y2="395" class="m-line"
+              marker-start="url(#arr-start)" marker-end="url(#arr-end)"/>
+
+      </svg>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- ───────────── ASYMMETRY ───────────── -->
+  <section>
+    <h2>Endless &middot; Binary</h2>
+
+    <p class="principle-line">
+      Truth and Beauty are <em>noble, endless</em> pursuits.<br />
+      Equality and Eternity are <strong>binary, time-bound</strong>.
+    </p>
+
+    <div class="asym-grid" aria-hidden="true">
+      <div class="asym-col endless">
+        <div class="asym-label">Endless &middot; horizon recedes</div>
+        <div class="asym-item">
+          find(<span class="asym-arg">Truth</span>)
+          <span class="asym-meaning">search for information &rarr; approach infinity</span>
+        </div>
+        <div class="asym-item">
+          max(<span class="asym-arg">Beauty</span>)
+          <span class="asym-meaning">shape new information &rarr; build abundance</span>
+        </div>
+      </div>
+
+      <div class="asym-col binary">
+        <div class="asym-label">Binary &middot; finish line exists</div>
+        <div class="asym-item">
+          abs(<span class="asym-arg">Equality</span>)
+          <span class="asym-meaning">share most information &rarr; cultivate connection</span>
+        </div>
+        <div class="asym-item">
+          for(<span class="asym-arg">Eternity</span>)
+          <span class="asym-meaning">save all information &rarr; destroy death</span>
+        </div>
+      </div>
+    </div>
+
+    <p style="margin-top: 1rem;">
+      The asymmetry matters. You cannot run out of clock chasing Truth or
+      Beauty &mdash; the next generation can pick up wherever you left off.
+      Equality and Eternity are different. They get won, or they don't.
+      And one of them is on a clock.
+    </p>
+
+    <div class="stake">
+      <div class="stake-num">150,000</div>
+      <div class="stake-line">people die every day.</div>
+      <div class="ticker-live">
+        Since you opened this page, <span id="death-counter" class="ticker-num">0</span>
+        have died.
+      </div>
+    </div>
+
+    <div class="frontier">
+      <div class="label">The mission</div>
+      <div class="name">the Final Frontier</div>
       <p>
-        Two kinds of minds matter from here:
-        the <strong>artificial</strong> ones we are now building, and the
-        <strong>human</strong> ones we have always had. Their alignment, and the
-        velocity of communication between them, is the most important variable of the century.
-      </p>
-      <p>
-        Everything I work on points, eventually, at one outcome:
-        <em>exponential, lossless communication between minds that are aligned.</em>
-        Deeper relationships. Higher productivity. Faster innovation.
-      </p>
-    </div>
-
-    <div class="pursuits" aria-label="Four pursuits">
-
-      <div class="pursuit">
-        <span class="fn">find(<span class="arg">Truth</span>)</span>
-        <span class="arrow">↓</span>
-        <span class="conclusion">Approach infinity</span>
-        <span class="gloss">search for information</span>
-      </div>
-
-      <div class="pursuit">
-        <span class="fn">max(<span class="arg">Beauty</span>)</span>
-        <span class="arrow">↓</span>
-        <span class="conclusion">Build abundance</span>
-        <span class="gloss">shape new information</span>
-      </div>
-
-      <div class="pursuit">
-        <span class="fn">abs(<span class="arg">Equality</span>)</span>
-        <span class="arrow">↓</span>
-        <span class="conclusion">Cultivate connection</span>
-        <span class="gloss">share most information</span>
-      </div>
-
-      <div class="pursuit">
-        <span class="fn">for(<span class="arg">Eternity</span>)</span>
-        <span class="arrow">↓</span>
-        <span class="conclusion">Outlast time</span>
-        <span class="gloss">save all information</span>
-      </div>
-
-    </div>
-
-    <div class="stanza">
-      <p class="kpi">
-        <span class="key">North star</span>
-        Exponential communication, between aligned minds, across time.
+        The day death becomes optional.
+        That is my personal mission &mdash; and everything I do is to make it happen.
       </p>
     </div>
   </section>
 
   <hr class="rule" />
 
-  <!-- ───────────── THE WORK ───────────── -->
+  <!-- ───────────── THE BOTTLENECK ───────────── -->
   <section>
-    <h2>The Work</h2>
+    <h2>The Bottleneck</h2>
+
+    <p>
+      Alignment must scale, and acceleration must compound. The bottleneck on
+      both &mdash; especially for human minds &mdash; is the same one:
+      <em>communication</em>.
+    </p>
+    <p class="principle-line" style="margin-top: 1.6rem;">
+      Bend the rate at which minds can find, transmit and verify each other's
+      signal &mdash; and you bend the timeline on every goal downstream.
+    </p>
+    <p style="margin-top: 1.6rem;">
+      That is why a communication product can sit underneath a mortality
+      mission without it being a stretch. The lever is upstream of everything.
+    </p>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- ───────────── VERSE ───────────── -->
+  <section>
+    <h2>VERSE &middot; Exponential Communication</h2>
+
+    <p>
+      VERSE is the lever I have chosen. A private, asynchronous network where
+      language models handle the repetitive opening of every connection &mdash;
+      so finite human attention can be spent only on the parts of a
+      conversation that actually matter.
+    </p>
+    <p>
+      <em>Same depth. Ten times the surface area. No calendars.</em>
+    </p>
+
+    <div class="verse-split">
+      <div class="verse-card">
+        <div class="vc-label">Life</div>
+        <div class="vc-words">friendship &middot; family &middot; love</div>
+        <div class="vc-effect">alignment between minds</div>
+      </div>
+      <div class="verse-card">
+        <div class="vc-label">Work</div>
+        <div class="vc-words">sales &middot; funding &middot; advice</div>
+        <div class="vc-effect">acceleration toward the goals</div>
+      </div>
+    </div>
+
+    <p class="verse-outcomes">
+      deeper relationships<span class="sep">&middot;</span>
+      higher productivity<span class="sep">&middot;</span>
+      faster innovation
+    </p>
+
+    <p style="margin-top: 2rem;">
+      <a href="https://verseisbetter.com" target="_blank" rel="noopener">verseisbetter.com</a>
+    </p>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- ───────────── THE WORK: D · I · V ───────────── -->
+  <section>
+    <h2>The Work &middot; D &middot; I &middot; V</h2>
+
+    <p class="work-aside">
+      My life has been a trajectory leading to this single moment &mdash;
+      making exponential communication happen. I noticed only afterwards: the
+      initials of my three companies &mdash;
+      <span class="di-v">D</span>extra,
+      <span class="di-v">I</span>ntrobot,
+      <span class="di-v">V</span>ERSE &mdash;
+      are the same three letters my parents gave me.
+    </p>
 
     <div class="eras">
 
       <article class="era">
-        <div class="year">2023 — now</div>
-        <div class="body">
-          <h3>VERSE <span class="role">Founder</span></h3>
+        <div class="era-cap" aria-hidden="true">D</div>
+        <div class="era-body">
+          <div class="era-year">2016 &mdash; 2019</div>
+          <h3>Dextra <span class="role">Founder</span></h3>
           <p>
-            A private, asynchronous network for founders, operators, and leaders.
-            VERSE uses language models to handle the repetitive, low-signal opening
-            of every new connection, so people can spend their finite attention on
-            the parts of a conversation that actually matter.
+            A collaboration platform built for creative professionals &mdash;
+            designers, illustrators, animators, writers &mdash; to find each
+            other and ship work together. Grew to roughly 50,000 users and
+            10,000 collaborative projects before being acquired.
           </p>
-          <p>
-            <em>Same depth, ten times the surface area. No calendars.</em>
-          </p>
-          <a href="https://verseisbetter.com" class="outcome">verseisbetter.com</a>
+          <span class="outcome">Acquired</span>
         </div>
       </article>
 
       <article class="era">
-        <div class="year">2019 — 2022</div>
-        <div class="body">
+        <div class="era-cap" aria-hidden="true">I</div>
+        <div class="era-body">
+          <div class="era-year">2019 &mdash; 2022</div>
           <h3>Introbot <span class="role">Founder</span></h3>
           <p>
-            An AI-powered networking assistant that lived inside WhatsApp.
-            During the second wave of COVID-19 in India, it was rebuilt overnight
-            into a resource-matching tool — connecting patients with verified
-            medical supplies and hospital beds. It processed roughly 750,000 SOS
-            queries in 30 days, and impacted around 25,000 lives.
+            An AI-powered networking assistant living inside WhatsApp. During
+            the second wave of COVID-19 in India, it was rebuilt overnight
+            into a resource-matching tool &mdash; connecting patients with
+            verified medical supplies and hospital beds. It processed roughly
+            750,000 SOS queries in 30 days, and impacted around 25,000 lives.
           </p>
           <span class="outcome">Transitioned out; company still operating</span>
         </div>
       </article>
 
       <article class="era">
-        <div class="year">2016 — 2019</div>
-        <div class="body">
-          <h3>Dextra <span class="role">Founder</span></h3>
+        <div class="era-cap" aria-hidden="true">V</div>
+        <div class="era-body">
+          <div class="era-year">2023 &mdash; now</div>
+          <h3>VERSE <span class="role">Founder</span></h3>
           <p>
-            A collaboration platform built specifically for creative professionals —
-            designers, illustrators, animators, writers — to find each other and
-            ship work together. Grew to roughly 50,000 active users and 10,000
-            collaborative projects before being acquired.
+            A private, asynchronous network for founders, operators and
+            leaders. VERSE uses language models to handle the repetitive,
+            low-signal opening of every new connection &mdash; so people can
+            spend their finite attention only on the parts of a conversation
+            that actually matter.
           </p>
-          <span class="outcome">Acquired</span>
+          <p><em>The bottleneck-buster. The lever I expect to spend the rest of my life pulling.</em></p>
+          <a href="https://verseisbetter.com" class="outcome">verseisbetter.com</a>
         </div>
       </article>
 
@@ -545,65 +1268,60 @@
 
   <hr class="rule" />
 
-  <!-- ───────────── PRINCIPLES ───────────── -->
+  <!-- ───────────── CAAM ───────────── -->
   <section>
-    <h2>Operating Principles</h2>
+    <h2>The Mantra</h2>
 
-    <div class="principles">
-
-      <div class="principle-item">
-        <div class="label">i. information is fundamental</div>
-        <p>
-          Most systemic problems — and most of their solutions — are
-          information problems in disguise. Private information forms identity;
-          public information forms civilisation. I design accordingly.
-        </p>
+    <div class="caam-block">
+      <div class="caam-letters" aria-label="C A A M">
+        C<span class="dot">&middot;</span>A<span class="dot">&middot;</span>A<span class="dot">&middot;</span>M
       </div>
-
-      <div class="principle-item">
-        <div class="label">ii. asynchronous depth</div>
-        <p>
-          Synchronous communication is a bottleneck. Build tools that allow deep,
-          considered exchange across time. Reserve real-time for the relationships
-          that have already earned it.
-        </p>
+      <div class="caam-expand">
+        Keep <strong>Calm</strong>. And do <strong>Kaam</strong>.
       </div>
-
-      <div class="principle-item">
-        <div class="label">iii. abundance over scarcity</div>
-        <p>
-          The best networks are positive-sum: the value to each participant should
-          grow with the size of the whole. If a system requires someone to lose for
-          someone else to win, it is the wrong system.
-        </p>
+      <div class="caam-gloss">
+        kaam &mdash; <em>work, in Hindi</em>
       </div>
-
-      <div class="principle-item">
-        <div class="label">iv. keep calm &amp; do kaam</div>
-        <p>
-          <em>Kaam</em>, in Hindi, means work. The right pace is not the fastest
-          one — it is the one that allows clear thinking, sustained effort, and a
-          long enough horizon for compounding to do its job.
-        </p>
-      </div>
-
     </div>
+
+    <p style="margin: 3rem auto 0; max-width: 38em; text-align: center; color: var(--ink-soft); font-style: italic;">
+      The operating mode for a mission measured in decades. Contemplative
+      posture, relentless output, no drama.
+    </p>
   </section>
 
   <!-- ───────────── FOOTER ───────────── -->
   <footer>
     <div class="links">
+      <a href="https://linkedin.com/in/divyaansh" target="_blank" rel="noopener">linkedin</a>
       <a href="mailto:divyaansh@verseisbetter.com">email</a>
       <a href="https://x.com/divyaanshanuj" target="_blank" rel="noopener">x</a>
-      <a href="https://linkedin.com/in/divyaansh" target="_blank" rel="noopener">linkedin</a>
-      <a href="https://github.com/divyaansh" target="_blank" rel="noopener">github</a>
+      <!-- <a href="https://github.com/divyaansh" target="_blank" rel="noopener">github</a> -->
     </div>
     <div class="colophon">
-      Divyaansh Anuj · in motion since 2014
+      &copy; Divyaansh Anuj <script>document.write(new Date().getFullYear())</script>
     </div>
   </footer>
 
 </main>
+
+<script>
+  // Quiet death-rate ticker. 150,000/day = ~1.7361/sec.
+  // No drama — just an honest count of what has happened while you read.
+  (function () {
+    const el = document.getElementById('death-counter');
+    if (!el) return;
+    const ratePerSec = 150000 / 86400;
+    const start = performance.now();
+    const fmt = new Intl.NumberFormat('en-US');
+    function tick() {
+      const elapsed = (performance.now() - start) / 1000;
+      el.textContent = fmt.format(Math.floor(elapsed * ratePerSec));
+    }
+    tick();
+    setInterval(tick, 800);
+  })();
+</script>
 
 </body>
 </html>
